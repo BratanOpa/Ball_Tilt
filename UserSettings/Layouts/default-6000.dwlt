@@ -328,8 +328,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "UnityEditor.MainToolbarWindow\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 66
-    y: 95
+    x: 0
+    y: 0
     width: 2494
     height: 36
   m_SerializedDataModeController:
@@ -646,10 +646,7 @@ MonoBehaviour:
       m_Data: 46168
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 45704
-    - m_Data: 46022
-    - m_Data: 1000000000
-    - m_Data: 2147483647
+    - m_Data: 45722
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -682,7 +679,7 @@ MonoBehaviour:
       m_Data: 0
     m_ExpandedIDs:
     - m_Data: 0
-    - m_Data: 45704
+    - m_Data: 45722
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -716,8 +713,8 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: []
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: TiltLight
-      m_OriginalName: TiltLight
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
@@ -725,10 +722,10 @@ MonoBehaviour:
         width: 0
         height: 0
       m_UserData:
-        m_Data: 46190
+        m_Data: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_TrimLeadingAndTrailingWhitespace: 0
       m_ClientGUIView: {fileID: 11}
@@ -764,8 +761,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Hierarchy\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 66
-    y: 131
+    x: 0
+    y: 24
     width: 375
     height: 787
   m_SerializedDataModeController:
@@ -784,10 +781,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs:
-      - m_Data: -38670
+      m_SelectedIDs: []
       m_LastClickedID:
-        m_Data: -38670
+        m_Data: 0
       m_ExpandedIDs:
       - m_Data: -1300
       m_RenameOverlay:
@@ -836,8 +832,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 442
-    y: 131
+    x: 377
+    y: 24
     width: 848
     height: 787
   m_SerializedDataModeController:
@@ -1376,7 +1372,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: 0.25622976, y: 0.3963459, z: -0.11620281, w: 0.87393755}
     speed: 2
-    m_Value: {x: 0.25639054, y: 0.39511865, z: -0.11584298, w: 0.8744859}
+    m_Value: {x: 0.25622973, y: 0.39634588, z: -0.1162028, w: 0.8739375}
   m_Size:
     m_Target: 8.229258
     speed: 2
@@ -1490,8 +1486,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Console\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 66
-    y: 944
+    x: 0
+    y: 837
     width: 1981
     height: 450
   m_SerializedDataModeController:
@@ -1547,7 +1543,7 @@ MonoBehaviour:
     m_DynamicPanelBehavior: 0
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 45558
+  m_LastSelectedObjectID: 0
 --- !u!114 &20
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1569,8 +1565,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 2048
-    y: 131
+    x: 1983
+    y: 24
     width: 511
     height: 1263
   m_SerializedDataModeController:
@@ -1620,8 +1616,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Game\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1292
-    y: 131
+    x: 1227
+    y: 24
     width: 754
     height: 787
   m_SerializedDataModeController:
