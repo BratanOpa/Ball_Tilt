@@ -1,10 +1,13 @@
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
+using UnityEngine.InputSystem;
 
-public class TiltGravityController : MonoBehaviour
+public class TiltControl : MonoBehaviour
 {
     public float speed = 1f;
     public Vector3 offset;
+    public bool keyboardControl;
+
+    private Vector2 moveInput;
     private Rigidbody rb;
 
     void Start()
@@ -17,5 +20,14 @@ public class TiltGravityController : MonoBehaviour
     {
         Vector3 tilt = Input.acceleration;
         rb.AddForce((new Vector3(tilt.x, tilt.z, tilt.y) + offset ) * speed * rb.mass);
+        if (keyboardControl)
+        {
+            rb.AddForce(new Vector3(moveInput.x , 0, moveInput.y) * speed);
+        }
+    }
+
+    public void OnMove(InputValue value)
+    {
+        moveInput = value.Get<Vector2>();
     }
 }
