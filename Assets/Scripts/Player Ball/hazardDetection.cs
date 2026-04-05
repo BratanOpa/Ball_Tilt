@@ -14,17 +14,10 @@ public class hazardDetection : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Hole Hazard"))
         {
-            print("collision detected!");
             Respawn();
         }
     }
