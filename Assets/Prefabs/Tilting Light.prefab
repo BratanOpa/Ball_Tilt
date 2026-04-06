@@ -158,4 +158,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TiltCamera
   offset: {x: 90, y: 0, z: 0}
   speed: 1
-  amplitude: -10
+  amplitude: 10
