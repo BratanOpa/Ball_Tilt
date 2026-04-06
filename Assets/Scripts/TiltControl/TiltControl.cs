@@ -6,7 +6,7 @@ public class TiltControl : MonoBehaviour
 {
     public float speed = 1f;
     public Vector3 offset;
-    public bool keyboardControl;
+    public bool isKeyboardControl;
 
     private Vector2 moveInput;
     private Rigidbody rb;
@@ -22,15 +22,22 @@ public class TiltControl : MonoBehaviour
     {
         Vector3 tilt = Input.acceleration;
         rb.AddForce((new Vector3(tilt.y, tilt.z, -tilt.x) + offset ) * speed * rb.mass);
-        if (keyboardControl)
+        if (isKeyboardControl)
         {
-            rb.AddForce(new Vector3(moveInput.y , 0, -moveInput.x) * speed);
+            keyboardControl();
         }
     }
 
-    public void OnMove(InputValue value)
+    void keyboardControl()
     {
-        moveInput = value.Get<Vector2>();
+        Vector3 move = Vector3.zero;
+
+        if (Input.GetKey(KeyCode.W)) move += Vector3.right;
+        if (Input.GetKey(KeyCode.S)) move += Vector3.left;
+        if (Input.GetKey(KeyCode.A)) move += Vector3.forward;
+        if (Input.GetKey(KeyCode.D)) move += Vector3.back;
+
+        rb.AddForce(move * speed/4);
     }
 
 }
