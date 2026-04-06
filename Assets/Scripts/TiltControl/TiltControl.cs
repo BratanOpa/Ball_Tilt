@@ -1,6 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
-
 
 public class TiltControl : MonoBehaviour
 {
@@ -15,7 +13,7 @@ public class TiltControl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = true;
-        
+        rb.interpolation = RigidbodyInterpolation.Interpolate;  // Makes ball render in higher (120) fps while physics has 50 tps, smooth graphics
     }
 
     void FixedUpdate()
