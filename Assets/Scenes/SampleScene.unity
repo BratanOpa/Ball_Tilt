@@ -961,7 +961,7 @@ GameObject:
   - component: {fileID: 973057598}
   - component: {fileID: 973057597}
   - component: {fileID: 973057596}
-  - component: {fileID: 973057595}
+  - component: {fileID: 973057601}
   m_Layer: 0
   m_Name: Piston
   m_TagString: Untagged
@@ -969,24 +969,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &973057595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973057594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffe60fb96cd8e0c419937bfa68a0000e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Piston
-  pistonVisual: {fileID: 973057600}
-  pushDirection: {x: 9, y: 0, z: 1}
-  pushDistance: 2
-  pushSpeed: 20
-  returnSpeed: 5
-  force: 22.6
 --- !u!54 &973057596
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1021,7 +1003,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 973057594}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c367e77849440bc44ac880056cb892c7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1060,7 +1042,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 33e74956d83e3c541bf3ad8c83f1a46e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1101,12 +1083,25 @@ Transform:
   m_GameObject: {fileID: 973057594}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.335, y: 0.483, z: -3.592}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -1.756, y: 0.0328, z: -3.546}
+  m_LocalScale: {x: 1.2728, y: 0.2455, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &973057601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 973057594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ef0cdfd5706b042b86b7da9fbea8dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BounceWall
+  bounceForce: 20
 --- !u!1 &1057887206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1814,7 +1809,7 @@ PrefabInstance:
     - target: {fileID: 2056689363655026228, guid: 599a23e52c6a39f49944adcb2b612d31, type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 13400000, guid: c367e77849440bc44ac880056cb892c7, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5077976731753534789, guid: 599a23e52c6a39f49944adcb2b612d31, type: 3}
       propertyPath: m_Name
       value: Player Ball
@@ -1827,7 +1822,8 @@ PrefabInstance:
       propertyPath: spawnPosition
       value: 
       objectReference: {fileID: 165322845}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5457720651239146810, guid: 599a23e52c6a39f49944adcb2b612d31, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -10,21 +10,16 @@ public class BounceWall : MonoBehaviour
 
         if (rb != null)
         {
-            // Hämta normal från kontaktpunkten (vilket håll väggen "pekar")
-            Vector3 normal = collision.contacts[0].normal;
+            // Calculate direction based on the trampoline's rotation
+            // transform.up works whether it's on floor (up), wall (sideways), etc.
+            Vector3 bounceDirection = transform.up;
 
-            // Reflektera hastigheten (som en spegelstuds)
-            Vector3 newVelocity = Vector3.Reflect(rb.linearVelocity, normal);
+           // Optionally remove existing downward velocity for a cleaner bounce
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
 
-            // Sätt ny hastighet med extra kraft
-            rb.linearVelocity = newVelocity * bounceForce;
-
-            // Försök hitta tilt-scriptet och lås kontrollen tillfälligt
-            TiltControl tilt = rb.GetComponent<TiltControl>();
-            if (tilt != null)
-            {
-                tilt.LockControl(); // Stoppar spelarinput en kort stund
-            }
+            // Apply force
+            rb.AddForce(bounceDirection * bounceForce, ForceMode.Impulse);
+            Debug.Log("Boing!");
         }
     }
 }
