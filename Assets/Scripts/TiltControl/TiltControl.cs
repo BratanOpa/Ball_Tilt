@@ -12,6 +12,14 @@ public class TiltControl : MonoBehaviour
     private Rigidbody rb;
     private Vector3 lastVelocity;
 
+    // Håller koll på om spelaren tillfälligt inte får styra bollen
+    private bool controlLocked = false;
+    // Timer för hur länge kontrollen ska vara låst (starta den på 0)
+    private float controlLockTimer = 0f;
+    // Hur länge kontrollen ska vara låst efter en bounce (justera vid behov)
+    [SerializeField] float controlLockDuration = 0.2f;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -21,6 +29,20 @@ public class TiltControl : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Om kontrollen är låst, räkna ner tiden
+        if (controlLocked)
+        {
+            controlLockTimer -= Time.fixedDeltaTime;
+
+            // När tiden är slut ge tillbaka kontrollen
+            if (controlLockTimer <= 0f)
+            {
+                controlLocked = false;
+            }
+
+            return; // Hoppa över all rörelse medan låst
+        }
+
         Vector3 tilt = Input.acceleration;
         rb.AddForce((new Vector3(tilt.y, tilt.z, -tilt.x) + offset ) * speed * rb.mass);
         if (keyboardControl)
@@ -52,6 +74,14 @@ public class TiltControl : MonoBehaviour
         //#endif
 
     }
+
+    // Anropas när bollen ska "låsa controlls" en kort stund (t.ex. vid studs)
+    public void LockControl()
+    {
+        controlLocked = true;
+        controlLockTimer = controlLockDuration;
+    }
+
 
 }
 

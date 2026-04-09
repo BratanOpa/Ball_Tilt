@@ -511,7 +511,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 672d30ff3d75204ee9803c692fed6665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TiltLight
-  offset: {x: 50, y: -30, z: 0}
   speed: 5
   amplitude: 50
 --- !u!1001 &665317268
@@ -1550,15 +1549,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6906720878782457010, guid: 2f13d349c4043244f8efbfb2feee86aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.764
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6906720878782457010, guid: 2f13d349c4043244f8efbfb2feee86aa, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.425
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6906720878782457010, guid: 2f13d349c4043244f8efbfb2feee86aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.192
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 6906720878782457010, guid: 2f13d349c4043244f8efbfb2feee86aa, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1588,6 +1587,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7183059381164879190, guid: 2f13d349c4043244f8efbfb2feee86aa, type: 3}
+      propertyPath: bounceForce
+      value: 5.91
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1607,7 +1610,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1176835826049554257, guid: 599a23e52c6a39f49944adcb2b612d31, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.15
+      value: 0.588
       objectReference: {fileID: 0}
     - target: {fileID: 1176835826049554257, guid: 599a23e52c6a39f49944adcb2b612d31, type: 3}
       propertyPath: m_LocalPosition.y
