@@ -18,8 +18,9 @@ public class TiltControl : MonoBehaviour
     [Header("Tilt Settings")]
     public float sensitivity = 1f;   // Multiplier for tilt strength
     public float deadZone = 0.05f;  // Ignore small tilt noise
+    public bool useTilt = true;
+    public bool useJoystick = false;
 
-   
 
 
 
@@ -30,6 +31,10 @@ public class TiltControl : MonoBehaviour
         rb.interpolation = RigidbodyInterpolation.Interpolate;  // Makes ball render in higher (120) fps while physics has 50 tps, smooth graphics
         joystick = FindFirstObjectByType<Joystick>();
         print("joystick " + joystick);
+
+        sensitivity = GameSettings.sensitivity;
+        deadZone = GameSettings.deadZone;
+
     }
     
     void FixedUpdate()
@@ -56,31 +61,24 @@ public class TiltControl : MonoBehaviour
     {
         Vector3 control = Vector3.zero;
 
-        if (enableAccelerometer)
-        {   // Original tilt
+        // Tilt
+        if (enableAccelerometer && useTilt)
+        {
             Vector3 tilt = Input.acceleration;
-
-           
-            // tilt -= calibrationOffset;
-
-            //Original mapping
-            control = new Vector3(tilt.y, tilt.z, -tilt.x) + offset;
+            control = new Vector3(tilt.y, tilt.z, -tilt.x) - offset;
 
 
-            //Apply deadzone
+            // Apply deadzone
             if (Mathf.Abs(control.x) < deadZone) control.x = 0;
             if (Mathf.Abs(control.y) < deadZone) control.y = 0;
             if (Mathf.Abs(control.z) < deadZone) control.z = 0;
-
-
         }
-        //Joystick
-        if(joystick != null)
+
+        // Joystick
+        if (useJoystick && joystick != null)
         {
             control += new Vector3(joystick.getPosition().y, 0, -joystick.getPosition().x) / 4;
         }
-        //Keyboard
-        control += Keyboard.getWASD() / 4;
 
         return control;
     }
@@ -95,6 +93,7 @@ public class TiltControl : MonoBehaviour
     public void SetSensitivity(float value)
     {
         sensitivity = value;
+        GameSettings.sensitivity = value;
         Debug.Log("Sensitivity set to: " + sensitivity);
     }
 
@@ -102,6 +101,7 @@ public class TiltControl : MonoBehaviour
     public void SetDeadZone(float value)
     {
         deadZone = value;
+        GameSettings.deadZone = value;
         Debug.Log("DeadZone set to: " + deadZone);
     }
 
