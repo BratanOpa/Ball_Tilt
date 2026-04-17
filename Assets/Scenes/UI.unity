@@ -837,7 +837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 122.44296, y: -112.56952}
+  m_AnchoredPosition: {x: 122.44287, y: -112.56958}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &377341051
@@ -2289,8 +2289,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 116103452439377848, guid: 599a23e52c6a39f49944adcb2b612d31, type: 3}
-        m_TargetAssemblyTypeName: TiltControl, Assembly-CSharp
+      - m_Target: {fileID: 377341056}
+        m_TargetAssemblyTypeName: FastMenu, Assembly-CSharp
         m_MethodName: SetDeadZone
         m_Mode: 4
         m_Arguments:
@@ -2806,8 +2806,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 116103452439377848, guid: 599a23e52c6a39f49944adcb2b612d31, type: 3}
-        m_TargetAssemblyTypeName: TiltControl, Assembly-CSharp
+      - m_Target: {fileID: 377341056}
+        m_TargetAssemblyTypeName: FastMenu, Assembly-CSharp
         m_MethodName: SetSensitivity
         m_Mode: 4
         m_Arguments:

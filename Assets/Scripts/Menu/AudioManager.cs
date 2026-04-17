@@ -10,7 +10,7 @@ public class AudioManager : MonoBehaviour
     {
         musicSource.volume = GameSettings.musicVolume;
         sfxSource.volume = GameSettings.sfxVolume;
-    
+
     }
 
     public void SetMusicVolume(float value)

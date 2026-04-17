@@ -32,14 +32,15 @@ public class TiltControl : MonoBehaviour
         joystick = FindFirstObjectByType<Joystick>();
         print("joystick " + joystick);
 
+
         sensitivity = GameSettings.sensitivity;
         deadZone = GameSettings.deadZone;
 
     }
-    
+
     void FixedUpdate()
-    {        
-        rb.AddForce(getControl() * (speed*sensitivity) * rb.mass);
+    {
+        rb.AddForce(getControl() * (speed * sensitivity) * rb.mass);
         chechImpactVibration();
     }
 
@@ -48,18 +49,25 @@ public class TiltControl : MonoBehaviour
         float deltaV = (rb.linearVelocity - lastVelocity).magnitude;
         lastVelocity = rb.linearVelocity;
 
-        if(deltaV > 1) {
-            Vibration.Vibrate((int)deltaV*20);
+        if (deltaV > 1)
+        {
+            Vibration.Vibrate((int)deltaV * 20);
         }
     }
     public Vector3 getLastVelocity()
     {
         return lastVelocity;
     }
-    
+
     public Vector3 getControl() //Can be Tilt, WASD, Joystick
     {
         Vector3 control = Vector3.zero;
+
+        if (joystick == null)
+        {
+            joystick = FindFirstObjectByType<Joystick>();
+        }
+
 
         // Tilt
         if (enableAccelerometer && useTilt)
@@ -85,7 +93,9 @@ public class TiltControl : MonoBehaviour
 
     public void Calibrate()
     {
-        offset = Input.acceleration;
+        Vector3 tilt = Input.acceleration;
+        offset = new Vector3(tilt.y, tilt.z, -tilt.x);
+
         Debug.Log("Calibration offset set to: " + offset);
     }
 

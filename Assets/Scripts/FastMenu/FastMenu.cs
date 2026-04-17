@@ -25,13 +25,23 @@ public class FastMenu : MonoBehaviour
     {
         animator = GetComponent<Animator>();
 
-       
-        calibrateButton.interactable = true;
+        tiltControl = FindFirstObjectByType<TiltControl>();
+
+        joystickActive = GameSettings.useJoystick;
+
+        joystick.SetActive(joystickActive);
+
+        tiltControl.useTilt = !joystickActive;
+        tiltControl.useJoystick = joystickActive;
+
+        calibrateButton.interactable = !joystickActive;
+
         settingsPanel.SetActive(false);
+
         sensitivitySlider.value = GameSettings.sensitivity;
         deadzoneSlider.value = GameSettings.deadZone;
-
     }
+
 
     public void toggleMenu()
     {
@@ -40,14 +50,22 @@ public class FastMenu : MonoBehaviour
 
     public void toggleControl()
     {
+        // Toggle the state
+        joystickActive = !joystickActive;
+
+        GameSettings.useJoystick = joystickActive;
+
+        // Show/hide joystick
         joystick.SetActive(joystickActive);
 
+        // Switch input modes
         tiltControl.useTilt = !joystickActive;
         tiltControl.useJoystick = joystickActive;
 
+        // Enable/disable calibrate button
         calibrateButton.interactable = !joystickActive;
 
-
+        Debug.Log("Joystick Active: " + joystickActive);
     }
 
 
@@ -65,6 +83,16 @@ public class FastMenu : MonoBehaviour
 
         if (fastMenu != null)
             fastMenu.SetActive(true);
+    }
+
+    public void SetSensitivity(float value)
+    {
+        tiltControl.SetSensitivity(value);
+    }
+
+    public void SetDeadZone(float value)
+    {
+        tiltControl.SetDeadZone(value);
     }
 
 }
