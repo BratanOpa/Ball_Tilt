@@ -30,8 +30,6 @@ public class TiltControl : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.interpolation = RigidbodyInterpolation.Interpolate;  // Makes ball render in higher (120) fps while physics has 50 tps, smooth graphics
         joystick = FindFirstObjectByType<Joystick>();
-        print("joystick " + joystick);
-
 
         offset = GameSettings.calibrationOffset;
         sensitivity = GameSettings.sensitivity;
@@ -64,12 +62,6 @@ public class TiltControl : MonoBehaviour
     public Vector3 getControl() //Can be Tilt, WASD, Joystick
     {
         Vector3 control = Vector3.zero;
-
-        if (joystick == null)
-        {
-            joystick = FindFirstObjectByType<Joystick>();
-        }
-
 
         // Tilt
         if (enableAccelerometer && useTilt)
@@ -117,6 +109,11 @@ public class TiltControl : MonoBehaviour
         deadZone = value * 0.2f; // scale slider to usable range
         GameSettings.deadZone = deadZone;
 
+    }
+
+    public void SetJoystick(Joystick joystick)
+    {
+        this.joystick = joystick;
     }
 
 }
