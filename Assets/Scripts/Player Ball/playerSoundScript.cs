@@ -23,7 +23,7 @@ public class playerSoundScript : MonoBehaviour
     {
         playerVelocity = rb.angularVelocity.magnitude;
         dynamicVolume = Mathf.Clamp01(playerVelocity / 12f);
-        rollingSource.volume = dynamicVolume;
+        rollingSource.volume = dynamicVolume * GameSettings.sfxVolume;
     }
 
     private float GetDynamicVolume() // if a sound's strength depends on the speed of the collision like with a wall
@@ -37,7 +37,7 @@ public class playerSoundScript : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Wall"))
             {
-                audioSource.volume = GetDynamicVolume();
+                audioSource.volume = GetDynamicVolume() * GameSettings.sfxVolume;
                 audioSource.PlayOneShot(ballCollisionSFX);
             }
 
@@ -50,7 +50,7 @@ public class playerSoundScript : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Hole Hazard") && !isRespawning)
             {
-                audioSource.volume = 0.6f;
+                audioSource.volume = 0.6f * GameSettings.sfxVolume;
                 audioSource.PlayOneShot(playerDeathSFX);
                 isRespawning = true;
                 StartCoroutine(RespawnCooldown());

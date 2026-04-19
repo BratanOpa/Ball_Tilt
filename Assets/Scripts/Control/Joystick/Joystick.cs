@@ -10,6 +10,15 @@ public class Joystick : MonoBehaviour, IDragHandler, IPointerDownHandler, IPoint
     private Vector2 inputVector;
 
 
+    public void OnEnable()
+    {
+        TiltControl tiltControl = FindFirstObjectByType<TiltControl>();
+        if(tiltControl != null)
+        {
+            tiltControl.SetJoystick(this);
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         OnDrag(eventData);

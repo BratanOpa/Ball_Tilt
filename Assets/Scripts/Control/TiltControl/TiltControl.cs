@@ -2,28 +2,46 @@ using UnityEngine;
 using System.Collections;
 
 
+
 public class TiltControl : MonoBehaviour
 {
     public float speed = 1f;
     public bool enableAccelerometer = true;
-    public Vector3 offset;
+    public Vector3 offset; //only needed if manual numeric offset?
 
     private Joystick joystick;
+    private SliderControl slider; //Two slider control, horizon/ vectical
     private Rigidbody rb;
     //private Vector3 control;    //Control of tilt, can be tilt, WASD, Joystick
     private Vector3 lastVelocity;
+
+    // Sensitivity & Deadzone
+    [Header("Tilt Settings")]
+    public float sensitivity = 1f;   // Multiplier for tilt strength
+    public float deadZone = 0.05f;  // Ignore small tilt noise
+    public bool useTilt = true;
+    public bool useJoystick = false;
+
+
+
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.interpolation = RigidbodyInterpolation.Interpolate;  // Makes ball render in higher (120) fps while physics has 50 tps, smooth graphics
         joystick = FindFirstObjectByType<Joystick>();
-        print("joystick " + joystick);
+
+        offset = GameSettings.calibrationOffset;
+        sensitivity = GameSettings.sensitivity;
+        deadZone = GameSettings.deadZone;
+
     }
-    
+
     void FixedUpdate()
-    {        
-        rb.AddForce(getControl() * speed * rb.mass);
+    {
+        rb.AddForce(getControl() * speed * Mathf.Pow(sensitivity, 2) * rb.mass);
+        //rb.AddForce(getControl() * (speed * sensitivity) * rb.mass);
         chechImpactVibration();
     }
 
@@ -32,34 +50,88 @@ public class TiltControl : MonoBehaviour
         float deltaV = (rb.linearVelocity - lastVelocity).magnitude;
         lastVelocity = rb.linearVelocity;
 
-        if(deltaV > 1) {
-            Vibration.Vibrate((int)deltaV*20);
+        if (deltaV > 1)
+        {
+            Vibration.Vibrate((int)deltaV * 20);
         }
     }
     public Vector3 getLastVelocity()
     {
         return lastVelocity;
     }
-    
+
     public Vector3 getControl() //Can be Tilt, WASD, Joystick
     {
         Vector3 control = Vector3.zero;
 
-        if (enableAccelerometer)
-        {   //Tilt
+        // Tilt
+        if (enableAccelerometer && useTilt)
+        {
             Vector3 tilt = Input.acceleration;
-            control = new Vector3(tilt.y, tilt.z, -tilt.x) + offset;
+            control = new Vector3(tilt.y, tilt.z, -tilt.x) - offset;
+
+
+            // Apply deadzone
+            if (Mathf.Abs(control.x) < deadZone) control.x = 0;
+            if (Mathf.Abs(control.y) < deadZone) control.y = 0;
+            if (Mathf.Abs(control.z) < deadZone) control.z = 0;
         }
-        //Joystick
-        if(joystick != null)
+
+        // Joystick
+        if (useJoystick && joystick != null)
         {
             control += new Vector3(joystick.getPosition().y, 0, -joystick.getPosition().x) / 4;
         }
-        //Keyboard
-        control += Keyboard.getWASD() / 4;
 
+        //Keyboard
+        control += Keyboard.getWASD();
+
+        //Sliders
+        if(slider != null)
+        {
+            //print("SliderX: " + slider.GetX());
+            control += new Vector3(slider.GetY(), 0, -slider.GetX()) / 4 ;
+        }
+            
         return control;
     }
+
+    public void Calibrate()
+    {
+        Vector3 tilt = Input.acceleration;
+        offset = new Vector3(tilt.y, tilt.z, -tilt.x);
+        GameSettings.calibrationOffset = offset;
+
+
+
+    }
+
+    //Sensitivity slider hook
+    public void SetSensitivity(float value)
+    {
+        sensitivity = value;
+        GameSettings.sensitivity = value;
+
+    }
+
+    //Deadzone slider hook
+    public void SetDeadZone(float value)
+    {
+        deadZone = value * 0.2f; // scale slider to usable range
+        GameSettings.deadZone = deadZone;
+
+    }
+
+    public void SetJoystick(Joystick joystick)
+    {
+        this.joystick = joystick;
+    }
+
+    public void SetSliderControl(SliderControl slider)
+    {
+        this.slider = slider;
+    }
+
 }
 
 public static class Keyboard
