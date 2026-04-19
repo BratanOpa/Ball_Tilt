@@ -45,17 +45,16 @@ public class catAttackTrigger : MonoBehaviour
         Instantiate(pawPrefab, transform.position, transform.rotation);
     }
 
-    void Update()
+     private void Update()
     {
-        if (runDelayTimer)
-        {
-            delayTimer -= Time.deltaTime;
-            if (delayTimer < 0)
-            {
-                delayTimer = 0.2f;
-                timer = 1f;
+        if (!runDelayTimer) return;
 
-            }
+        delayTimer -= Time.deltaTime;
+        if (delayTimer <= 0)
+        {
+            delayTimer = 0.2f;
+            currentTimer = timer;  
+            runDelayTimer = false;      
         }
     }
 }
