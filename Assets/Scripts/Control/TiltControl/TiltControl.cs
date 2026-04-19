@@ -10,6 +10,7 @@ public class TiltControl : MonoBehaviour
     public Vector3 offset; //only needed if manual numeric offset?
 
     private Joystick joystick;
+    private SliderControl slider; //Two slider control, horizon/ vectical
     private Rigidbody rb;
     //private Vector3 control;    //Control of tilt, can be tilt, WASD, Joystick
     private Vector3 lastVelocity;
@@ -82,6 +83,16 @@ public class TiltControl : MonoBehaviour
             control += new Vector3(joystick.getPosition().y, 0, -joystick.getPosition().x) / 4;
         }
 
+        //Keyboard
+        control += Keyboard.getWASD();
+
+        //Sliders
+        if(slider != null)
+        {
+            //print("SliderX: " + slider.GetX());
+            control += new Vector3(slider.GetY(), 0, -slider.GetX()) / 4 ;
+        }
+            
         return control;
     }
 
@@ -114,6 +125,11 @@ public class TiltControl : MonoBehaviour
     public void SetJoystick(Joystick joystick)
     {
         this.joystick = joystick;
+    }
+
+    public void SetSliderControl(SliderControl slider)
+    {
+        this.slider = slider;
     }
 
 }
