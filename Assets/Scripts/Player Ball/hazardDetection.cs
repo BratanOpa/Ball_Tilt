@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -7,6 +8,7 @@ public class hazardDetection : MonoBehaviour
 {
     [SerializeField] private TransitionManager transition;
     [SerializeField] private Transform spawnPosition;
+    [SerializeField] private String[] hazardTags = {"Hole Hazard" };
 
     private Rigidbody rb;
 
@@ -20,10 +22,15 @@ public class hazardDetection : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hole Hazard") && !isRespawning)
+        if(isRespawning) return;
+        foreach(String tag in hazardTags)
         {
-            StartCoroutine(Respawn());
-            isRespawning = true;
+            if (other.CompareTag(tag))
+            {
+                isRespawning = true;
+                StartCoroutine(Respawn());
+                break;
+            }
         }
     }
     
