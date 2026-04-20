@@ -28,7 +28,11 @@ public class hazardDetection : MonoBehaviour
             if (other.CompareTag(tag))
             {
                 isRespawning = true;
-                StartCoroutine(Respawn());
+                //respawna alla bollar istället för bara denna
+                foreach (var ball in FindObjectsByType<hazardDetection>(FindObjectsSortMode.None))
+                {
+                    ball.StartCoroutine(ball.Respawn());
+                }
                 break;
             }
         }

@@ -22,7 +22,8 @@ public class TiltControl : MonoBehaviour
     public bool useTilt = true;
     public bool useJoystick = false;
 
-
+    //styr om denna boll ska trigga vibration (undviker dubbel vibration ifall enemyball fins)
+    public bool enableVibration = true;
 
 
 
@@ -41,7 +42,6 @@ public class TiltControl : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(getControl() * speed * Mathf.Pow(sensitivity, 2) * rb.mass);
-        //rb.AddForce(getControl() * (speed * sensitivity) * rb.mass);
         chechImpactVibration();
     }
 
@@ -50,7 +50,7 @@ public class TiltControl : MonoBehaviour
         float deltaV = (rb.linearVelocity - lastVelocity).magnitude;
         lastVelocity = rb.linearVelocity;
 
-        if (deltaV > 1)
+        if (deltaV > 1 && enableVibration)
         {
             Vibration.Vibrate((int)deltaV * 20);
         }

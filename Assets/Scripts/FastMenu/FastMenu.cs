@@ -7,14 +7,13 @@ public class FastMenu : MonoBehaviour
 
     [Header("Control Mode")]
     public GameObject joystick;
-    public TiltControl tiltControl;
+    // public TiltControl tiltControl;
+    public TiltControl[] tiltControls; // NYTT: stöd för flera bollar
     public Button calibrateButton;
     public Slider sensitivitySlider;
     public Slider deadzoneSlider;
     public Slider musicSlider;
     public Slider volumeSlider;
-
-
 
     private bool joystickActive = false;
 
@@ -22,22 +21,28 @@ public class FastMenu : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject fastMenu;
 
-
-
     public void Start()
     {
         animator = GetComponent<Animator>();
 
-        tiltControl = GameObject.FindGameObjectWithTag("Player")
-                        .GetComponent<TiltControl>();
-        Debug.Log("TiltControl found: " + tiltControl); 
+        // tiltControl = GameObject.FindGameObjectWithTag("Player")
+        //                 .GetComponent<TiltControl>();
+
+        tiltControls = FindObjectsByType<TiltControl>(FindObjectsSortMode.None); //  hämta alla bollar
+        Debug.Log("TiltControls found: " + tiltControls.Length);
 
         joystickActive = GameSettings.useJoystick;
 
         joystick.SetActive(joystickActive);
 
-        tiltControl.useTilt = !joystickActive;
-        tiltControl.useJoystick = joystickActive;
+        // tiltControl.useTilt = !joystickActive;
+        // tiltControl.useJoystick = joystickActive;
+
+        foreach (var tc in tiltControls) //  applicera på alla
+        {
+            tc.useTilt = !joystickActive;
+            tc.useJoystick = joystickActive;
+        }
 
         calibrateButton.interactable = !joystickActive;
 
@@ -49,7 +54,6 @@ public class FastMenu : MonoBehaviour
         volumeSlider.value = GameSettings.sfxVolume;
     }
 
-
     public void toggleMenu()
     {
         animator.SetTrigger("Toggle");
@@ -57,19 +61,20 @@ public class FastMenu : MonoBehaviour
 
     public void toggleControl()
     {
-        // Toggle the state
         joystickActive = !joystickActive;
-
         GameSettings.useJoystick = joystickActive;
 
-        // Show/hide joystick
         joystick.SetActive(joystickActive);
 
-        // Switch input modes
-        tiltControl.useTilt = !joystickActive;
-        tiltControl.useJoystick = joystickActive;
+        // tiltControl.useTilt = !joystickActive;
+        // tiltControl.useJoystick = joystickActive;
 
-        // Enable/disable calibrate button
+        foreach (var tc in tiltControls) // applicera på alla
+        {
+            tc.useTilt = !joystickActive;
+            tc.useJoystick = joystickActive;
+        }
+
         calibrateButton.interactable = !joystickActive;
 
         Debug.Log("Joystick Active: " + joystickActive);
@@ -77,17 +82,13 @@ public class FastMenu : MonoBehaviour
 
     public void Calibrate()
     {
-        var tiltControl = GameObject.FindGameObjectWithTag("Player")
-                                   .GetComponent<TiltControl>();
+        // var tiltControl = GameObject.FindGameObjectWithTag("Player")
+        //                            .GetComponent<TiltControl>();
 
-        if (tiltControl != null)
+        foreach (var tc in tiltControls) // kalibrera alla
         {
-            tiltControl.Calibrate();
-            Debug.Log("Calibration triggered on: " + tiltControl.name);
-        }
-        else
-        {
-            Debug.LogWarning("No TiltControl found!");
+            tc.Calibrate();
+            Debug.Log("Calibration triggered on: " + tc.name);
         }
     }
 
@@ -109,13 +110,21 @@ public class FastMenu : MonoBehaviour
 
     public void SetSensitivity(float value)
     {
-        
-        tiltControl.SetSensitivity(value);
+        // tiltControl.SetSensitivity(value);
+
+        foreach (var tc in tiltControls) // ändra alla
+        {
+            tc.SetSensitivity(value);
+        }
     }
 
     public void SetDeadZone(float value)
     {
-        tiltControl.SetDeadZone(value);
-    }
+        // tiltControl.SetDeadZone(value);
 
+        foreach (var tc in tiltControls) // ändra alla
+        {
+            tc.SetDeadZone(value);
+        }
+    }
 }
