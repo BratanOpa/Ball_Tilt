@@ -3,6 +3,7 @@ using UnityEngine;
 public class catAttackTrigger : MonoBehaviour
 {
     [SerializeField] private GameObject pawPrefab;
+    [SerializeField] private GameObject spawnPoint;
     [SerializeField] private float timer = 1f;
     private float currentTimer;
     private float delayTimer = 0.2f;
@@ -42,7 +43,7 @@ public class catAttackTrigger : MonoBehaviour
         currentTimer = timer;
 
 
-        Instantiate(pawPrefab, transform.position, transform.rotation);
+        Instantiate(pawPrefab, spawnPoint.transform.position, transform.rotation);
     }
 
      private void Update()

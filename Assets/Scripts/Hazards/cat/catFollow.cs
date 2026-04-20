@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class catFollow : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    private bool canMove;
+    [SerializeField] private float speed = 5f;
+    private bool canMove = true;
     private GameObject player;
 
 
