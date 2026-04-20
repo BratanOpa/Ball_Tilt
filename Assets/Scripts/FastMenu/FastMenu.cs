@@ -7,44 +7,40 @@ public class FastMenu : MonoBehaviour
 
     [Header("Control Mode")]
     public GameObject joystick;
-    // public TiltControl tiltControl;
-    public TiltControl[] tiltControls; // NYTT: stöd för flera bollar
+    public GameObject sliderUI; 
+
+    public TiltControl tiltControl;
     public Button calibrateButton;
     public Slider sensitivitySlider;
     public Slider deadzoneSlider;
     public Slider musicSlider;
     public Slider volumeSlider;
 
-    private bool joystickActive = false;
+    // private bool joystickActive = false;
 
     [Header("Menus")]
     public GameObject settingsPanel;
     public GameObject fastMenu;
 
+    [Header("Control Icons")]
+public Image controlButtonImage; 
+    public Sprite tiltIcon;         
+    public Sprite joystickIcon;     
+    public Sprite sliderIcon;       
+
+
     public void Start()
     {
         animator = GetComponent<Animator>();
 
-        // tiltControl = GameObject.FindGameObjectWithTag("Player")
-        //                 .GetComponent<TiltControl>();
+        tiltControl = GameObject.FindGameObjectWithTag("Player")
+                        .GetComponent<TiltControl>();
 
-        tiltControls = FindObjectsByType<TiltControl>(FindObjectsSortMode.None); //  hämta alla bollar
-        Debug.Log("TiltControls found: " + tiltControls.Length);
+        Debug.Log("TiltControl found: " + tiltControl);
 
-        joystickActive = GameSettings.useJoystick;
+        // joystickActive = GameSettings.useJoystick; 
 
-        joystick.SetActive(joystickActive);
-
-        // tiltControl.useTilt = !joystickActive;
-        // tiltControl.useJoystick = joystickActive;
-
-        foreach (var tc in tiltControls) //  applicera på alla
-        {
-            tc.useTilt = !joystickActive;
-            tc.useJoystick = joystickActive;
-        }
-
-        calibrateButton.interactable = !joystickActive;
+        UpdateControlUI(); // uppdatera UI baserat på mode
 
         settingsPanel.SetActive(false);
 
@@ -61,34 +57,61 @@ public class FastMenu : MonoBehaviour
 
     public void toggleControl()
     {
-        joystickActive = !joystickActive;
-        GameSettings.useJoystick = joystickActive;
-
-        joystick.SetActive(joystickActive);
-
-        // tiltControl.useTilt = !joystickActive;
-        // tiltControl.useJoystick = joystickActive;
-
-        foreach (var tc in tiltControls) // applicera på alla
+        switch (GameSettings.controlMode) // rotera mellan 3 lägen
         {
-            tc.useTilt = !joystickActive;
-            tc.useJoystick = joystickActive;
+            case ControlMode.Tilt:
+                GameSettings.controlMode = ControlMode.Joystick;
+                break;
+
+            case ControlMode.Joystick:
+                GameSettings.controlMode = ControlMode.Slider;
+                break;
+
+            case ControlMode.Slider:
+                GameSettings.controlMode = ControlMode.Tilt;
+                break;
         }
 
-        calibrateButton.interactable = !joystickActive;
+        UpdateControlUI(); // uppdatera UI efter byte
+    }
 
-        Debug.Log("Joystick Active: " + joystickActive);
+    void UpdateControlUI()
+    {
+        joystick.SetActive(GameSettings.controlMode == ControlMode.Joystick);
+        sliderUI.SetActive(GameSettings.controlMode == ControlMode.Slider);
+
+        calibrateButton.interactable = (GameSettings.controlMode == ControlMode.Tilt);
+
+        // byt ikon beroende på läge
+        switch (GameSettings.controlMode)
+        {
+            case ControlMode.Tilt:
+                controlButtonImage.sprite = tiltIcon;
+                break;
+
+            case ControlMode.Joystick:
+                controlButtonImage.sprite = joystickIcon;
+                break;
+
+            case ControlMode.Slider:
+                controlButtonImage.sprite = sliderIcon;
+                break;
+        }
     }
 
     public void Calibrate()
     {
-        // var tiltControl = GameObject.FindGameObjectWithTag("Player")
-        //                            .GetComponent<TiltControl>();
+        var tiltControl = GameObject.FindGameObjectWithTag("Player")
+                                   .GetComponent<TiltControl>();
 
-        foreach (var tc in tiltControls) // kalibrera alla
+        if (tiltControl != null)
         {
-            tc.Calibrate();
-            Debug.Log("Calibration triggered on: " + tc.name);
+            tiltControl.Calibrate();
+            Debug.Log("Calibration triggered on: " + tiltControl.name);
+        }
+        else
+        {
+            Debug.LogWarning("No TiltControl found!");
         }
     }
 
@@ -110,21 +133,11 @@ public class FastMenu : MonoBehaviour
 
     public void SetSensitivity(float value)
     {
-        // tiltControl.SetSensitivity(value);
-
-        foreach (var tc in tiltControls) // ändra alla
-        {
-            tc.SetSensitivity(value);
-        }
+        tiltControl.SetSensitivity(value);
     }
 
     public void SetDeadZone(float value)
     {
-        // tiltControl.SetDeadZone(value);
-
-        foreach (var tc in tiltControls) // ändra alla
-        {
-            tc.SetDeadZone(value);
-        }
+        tiltControl.SetDeadZone(value);
     }
 }

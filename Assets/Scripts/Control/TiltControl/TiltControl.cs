@@ -19,8 +19,10 @@ public class TiltControl : MonoBehaviour
     [Header("Tilt Settings")]
     public float sensitivity = 1f;   // Multiplier for tilt strength
     public float deadZone = 0.05f;  // Ignore small tilt noise
-    public bool useTilt = true;
-    public bool useJoystick = false;
+    
+    
+    //public bool useTilt = true;
+    //public bool useJoystick = false;
 
     //styr om denna boll ska trigga vibration (undviker dubbel vibration ifall enemyball fins)
     public bool enableVibration = true;
@@ -60,39 +62,44 @@ public class TiltControl : MonoBehaviour
         return lastVelocity;
     }
 
-    public Vector3 getControl() //Can be Tilt, WASD, Joystick
+    public Vector3 getControl() //Can be Tilt, WASD, Joystick, slider
     {
         Vector3 control = Vector3.zero;
 
-        // Tilt
-        if (enableAccelerometer && useTilt)
+        
+        switch (GameSettings.controlMode) //  välj input-läge  tilt , joystick eller slider
         {
-            Vector3 tilt = Input.acceleration;
-            control = new Vector3(tilt.y, tilt.z, -tilt.x) - offset;
+            case ControlMode.Tilt:
+                if (enableAccelerometer)
+                {
+                    Vector3 tilt = Input.acceleration;
+                    control = new Vector3(tilt.y, tilt.z, -tilt.x) - offset;
 
+                    if (Mathf.Abs(control.x) < deadZone) control.x = 0;
+                    if (Mathf.Abs(control.y) < deadZone) control.y = 0;
+                    if (Mathf.Abs(control.z) < deadZone) control.z = 0;
+                }
+                break;
 
-            // Apply deadzone
-            if (Mathf.Abs(control.x) < deadZone) control.x = 0;
-            if (Mathf.Abs(control.y) < deadZone) control.y = 0;
-            if (Mathf.Abs(control.z) < deadZone) control.z = 0;
-        }
+            case ControlMode.Joystick:
+                if (joystick != null)
+                {
+                    control = new Vector3(joystick.getPosition().y, 0, -joystick.getPosition().x) / 4;
+                }
+                break;
 
-        // Joystick
-        if (useJoystick && joystick != null)
-        {
-            control += new Vector3(joystick.getPosition().y, 0, -joystick.getPosition().x) / 4;
+            case ControlMode.Slider:
+                if (slider != null)
+                {
+                    control = new Vector3(slider.GetY(), 0, -slider.GetX()) / 4;
+                }
+                break;
         }
 
         //Keyboard
         control += Keyboard.getWASD();
 
-        //Sliders
-        if(slider != null)
-        {
-            //print("SliderX: " + slider.GetX());
-            control += new Vector3(slider.GetY(), 0, -slider.GetX()) / 4 ;
-        }
-            
+        
         return control;
     }
 
