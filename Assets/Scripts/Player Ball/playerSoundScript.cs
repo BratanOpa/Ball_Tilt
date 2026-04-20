@@ -11,22 +11,28 @@ public class playerSoundScript : MonoBehaviour
     private float dynamicVolume;
 
     private bool isRespawning = false;
-    
+
+    //avgör om detta är huvudspelaren (fullt ljud + death-ljud)
+    public bool isMainPlayer = true;
+
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
 
-
     private void Update()
     {
         playerVelocity = rb.angularVelocity.magnitude;
         dynamicVolume = Mathf.Clamp01(playerVelocity / 12f);
-        rollingSource.volume = dynamicVolume * GameSettings.sfxVolume;
+
+        //enemy får lägre volym
+        float volumeMultiplier = isMainPlayer ? 1f : 0.6f;
+
+        rollingSource.volume = dynamicVolume * GameSettings.sfxVolume * volumeMultiplier;
     }
 
-    private float GetDynamicVolume() // if a sound's strength depends on the speed of the collision like with a wall
+    private float GetDynamicVolume()
     {
         return dynamicVolume;
     }
@@ -37,26 +43,45 @@ public class playerSoundScript : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Wall"))
             {
-                audioSource.volume = GetDynamicVolume() * GameSettings.sfxVolume;
+                // enemy får lägre volym
+                float volumeMultiplier = isMainPlayer ? 1f : 0.6f;
+
+                audioSource.volume = GetDynamicVolume() * GameSettings.sfxVolume * volumeMultiplier;
                 audioSource.PlayOneShot(ballCollisionSFX);
             }
 
-            //audioSource.volume = 1.0f;
+            //bollkollision = deathljud
+            if (collision.gameObject.GetComponent<hazardDetection>() != null && !isRespawning)
+            {
+                // endast huvudspelaren spelar death-ljud
+                if (isMainPlayer)
+                {
+                    audioSource.volume = 0.6f * GameSettings.sfxVolume;
+                    audioSource.PlayOneShot(playerDeathSFX);
+                }
+
+                isRespawning = true;
+                StartCoroutine(RespawnCooldown());
+            }
+
+
         }
     }
+
     private void OnTriggerEnter(Collider collision)
     {
         if (audioSource != null)
         {
             if (collision.gameObject.CompareTag("Hole Hazard") && !isRespawning)
             {
+
+
                 audioSource.volume = 0.6f * GameSettings.sfxVolume;
                 audioSource.PlayOneShot(playerDeathSFX);
+
                 isRespawning = true;
                 StartCoroutine(RespawnCooldown());
             }
-
-            //audioSource.volume = 1.0f;
         }
     }
 
