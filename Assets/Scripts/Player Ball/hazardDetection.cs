@@ -27,13 +27,36 @@ public class hazardDetection : MonoBehaviour
         {
             if (other.CompareTag(tag))
             {
-                isRespawning = true;
-                StartCoroutine(Respawn());
+                TriggerRespawnAll(); // gemensam funktion
                 break;
             }
         }
     }
-    
+
+    //hantera kollision mellan bollar
+    private void OnCollisionEnter(Collision other)
+    {
+        if (isRespawning) return;
+
+        // kolla om vi träffar en annan boll (har samma script)
+        if (other.gameObject.GetComponent<hazardDetection>() != null)
+        {
+            TriggerRespawnAll(); //  samma death som hazard
+        }
+    }
+
+    void TriggerRespawnAll()
+    {
+        isRespawning = true;
+
+        foreach (var ball in FindObjectsByType<hazardDetection>(FindObjectsSortMode.None))
+        {
+            ball.StartCoroutine(ball.Respawn());
+        }
+    }
+
+
+
     IEnumerator Respawn()
     {
         transition.ActivateHazardHoleDeathAnimation();
