@@ -96,7 +96,7 @@ public class TiltControl : MonoBehaviour
         }
 
         //Keyboard
-        control += Keyboard.getWASD();
+        control += Keyboard.getWASD() / 4;
 
         
         return control;
