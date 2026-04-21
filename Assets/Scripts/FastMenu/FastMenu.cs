@@ -46,6 +46,7 @@ public class FastMenu : MonoBehaviour
         deadzoneSlider.value = GameSettings.deadZone;
         musicSlider.value = GameSettings.musicVolume;
         volumeSlider.value = GameSettings.sfxVolume;
+
     }
 
     public void toggleMenu()

@@ -6,11 +6,12 @@ public class AudioManager : MonoBehaviour
     public AudioSource sfxSource;
 
 
+
     private void Start()
     {
         musicSource.volume = GameSettings.musicVolume;
         sfxSource.volume = GameSettings.sfxVolume;
-
+        musicSource.mute = GameSettings.musicMuted;
     }
 
     public void SetMusicVolume(float value)
@@ -28,5 +29,6 @@ public class AudioManager : MonoBehaviour
     public void ToggleMusic()
     {
         musicSource.mute = !musicSource.mute;
+        GameSettings.musicMuted = musicSource.mute;
     }
 }
