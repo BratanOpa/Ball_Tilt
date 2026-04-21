@@ -54,7 +54,7 @@ public class TiltControl : MonoBehaviour
 
         if (deltaV > 1 && enableVibration)
         {
-            Vibration.Vibrate((int)deltaV * 20);
+            Vibration.Vibrate(Mathf.Clamp((int)deltaV * 20, 0, 1));
         }
     }
     public Vector3 getLastVelocity()
@@ -67,7 +67,7 @@ public class TiltControl : MonoBehaviour
         Vector3 control = Vector3.zero;
 
         
-        switch (GameSettings.controlMode) //  välj input-läge  tilt , joystick eller slider
+        switch (GameSettings.controlMode) //  vï¿½lj input-lï¿½ge  tilt , joystick eller slider
         {
             case ControlMode.Tilt:
                 if (enableAccelerometer)
