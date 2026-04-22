@@ -297,7 +297,7 @@ GameObject:
   - component: {fileID: 79285660}
   m_Layer: 0
   m_Name: WhiteBoard (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -463,6 +463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -502,6 +506,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 936684865}
+  - {fileID: 973659890}
+  - {fileID: 1111035902}
+  - {fileID: 1549746216}
+  - {fileID: 764036268}
   - {fileID: 862459888}
   - {fileID: 438273674}
   - {fileID: 926977466}
@@ -659,6 +668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -814,6 +827,10 @@ PrefabInstance:
     - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_Name
       value: Glass (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1057,6 +1074,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1134,6 +1155,10 @@ PrefabInstance:
     - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1218,6 +1243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1275,7 +1304,7 @@ GameObject:
   - component: {fileID: 686077022}
   m_Layer: 0
   m_Name: Wall West
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1379,11 +1408,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1920595517}
+    m_TransformParent: {fileID: 356676698}
     m_Modifications:
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.80879
+      value: -2.62707
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1391,7 +1420,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.536854
+      value: 6.014014
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1425,6 +1454,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Glass (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1449,7 +1482,7 @@ GameObject:
   - component: {fileID: 780720529}
   m_Layer: 0
   m_Name: Wall South
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1803,6 +1836,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Glass
       objectReference: {fileID: 0}
+    - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1898,11 +1935,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1920595517}
+    m_TransformParent: {fileID: 356676698}
     m_Modifications:
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.6262405
+      value: 1.8079605
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1910,7 +1947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.536854
+      value: 6.014014
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1943,6 +1980,10 @@ PrefabInstance:
     - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_Name
       value: Glass
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2021,6 +2062,10 @@ PrefabInstance:
     - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2108,7 +2153,7 @@ GameObject:
   - component: {fileID: 1057887207}
   m_Layer: 0
   m_Name: Wall East
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2274,6 +2319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2298,7 +2347,7 @@ GameObject:
   - component: {fileID: 1067527762}
   m_Layer: 0
   m_Name: Wall North
-  m_TagString: Ground
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2495,7 +2544,7 @@ GameObject:
   - component: {fileID: 1087692794}
   m_Layer: 0
   m_Name: WhiteBoard
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2661,6 +2710,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2677,7 +2730,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1920595517}
+    m_TransformParent: {fileID: 356676698}
     m_Modifications:
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalScale.x
@@ -2685,7 +2738,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.44521
+      value: 4.6269298
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2693,7 +2746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.536854
+      value: 6.014014
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2726,6 +2779,10 @@ PrefabInstance:
     - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_Name
       value: Glass (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2804,6 +2861,10 @@ PrefabInstance:
     - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3034,6 +3095,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3111,6 +3176,10 @@ PrefabInstance:
     - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3362,11 +3431,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1920595517}
+    m_TransformParent: {fileID: 356676698}
     m_Modifications:
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.59379
+      value: -0.41207004
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3374,7 +3443,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.536854
+      value: 6.014014
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3407,6 +3476,10 @@ PrefabInstance:
     - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_Name
       value: Glass (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3646,6 +3719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3838,6 +3915,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3916,6 +3997,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3993,6 +4078,10 @@ PrefabInstance:
     - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4116,6 +4205,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4175,11 +4268,6 @@ Transform:
   - {fileID: 1157112798}
   - {fileID: 1087692793}
   - {fileID: 79285659}
-  - {fileID: 936684865}
-  - {fileID: 973659890}
-  - {fileID: 1111035902}
-  - {fileID: 1549746216}
-  - {fileID: 764036268}
   m_Father: {fileID: 1719599694}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1957139801
@@ -4249,6 +4337,10 @@ PrefabInstance:
     - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4463,6 +4555,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Medium BuildingBlock Medium DSV (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7017416975455750295, guid: bbf7ddc4f8096dc4b8257c96ce4ec295, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4645,11 +4741,11 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1920595517}
+    m_TransformParent: {fileID: 356676698}
     m_Modifications:
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.81
+      value: 3.99172
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.y
@@ -4657,7 +4753,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.588
+      value: 3.0651598
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4665,15 +4761,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4052198606471230448, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4690,6 +4786,10 @@ PrefabInstance:
     - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
       propertyPath: m_Name
       value: Glass
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435282466850343410, guid: 8ae3e9a18af26c245aa2229e31d95f99, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
