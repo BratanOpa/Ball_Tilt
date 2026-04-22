@@ -9,8 +9,7 @@ public class FastMenu : MonoBehaviour
     public GameObject joystick;
     public GameObject sliderUI;
 
-    // public TiltControl tiltControl;
-    public TiltControl[] tiltControls; // NYTT: stöd för flera bollar
+    public TiltControl[] tiltControls; // stöd för flera bollar
 
     public Button calibrateButton;
     public Slider sensitivitySlider;
@@ -22,31 +21,56 @@ public class FastMenu : MonoBehaviour
     public GameObject settingsPanel;
     public GameObject fastMenu;
 
+
     [Header("Control Icons")]
     public Image controlButtonImage;
     public Sprite tiltIcon;
     public Sprite joystickIcon;
     public Sprite sliderIcon;
 
-    public void Start()
+    void Start()
     {
         animator = GetComponent<Animator>();
 
-        // tiltControl = GameObject.FindGameObjectWithTag("Player")
-        //                 .GetComponent<TiltControl>();
 
-        tiltControls = FindObjectsByType<TiltControl>(FindObjectsSortMode.None); // NYTT: hämta alla bollar
+
+        // Hämta alla bollar i scenen
+        tiltControls = FindObjectsByType<TiltControl>(FindObjectsSortMode.None);
         Debug.Log("TiltControls found: " + tiltControls.Length);
 
-        UpdateControlUI(); // uppdatera UI baserat på mode
+        UpdateControlUI();
 
         settingsPanel.SetActive(false);
 
+        // --- SÄTT INITIALA VÄRDEN PÅ SLIDERS (viktigt att göra före listeners) ---
         sensitivitySlider.value = GameSettings.sensitivity;
         deadzoneSlider.value = GameSettings.deadZone;
         musicSlider.value = GameSettings.musicVolume;
         volumeSlider.value = GameSettings.sfxVolume;
 
+        // --- KOPPLA SLIDERS TILL AUDIO MANAGER (via singleton) ---
+        // Tar bort gamla listeners först för att undvika duplicates om UI laddas flera gånger
+        var audio = AudioManager.Instance;
+
+        if (audio != null)
+        {
+            musicSlider.onValueChanged.RemoveAllListeners();
+            volumeSlider.onValueChanged.RemoveAllListeners();
+
+            musicSlider.onValueChanged.AddListener(audio.SetMusicVolume);
+            volumeSlider.onValueChanged.AddListener(audio.SetSFXVolume);
+        }
+        else
+        {
+            Debug.LogWarning("AudioManager.Instance is null");
+        }
+
+        // --- KOPPLA GAMEPLAY SLIDERS ---
+        sensitivitySlider.onValueChanged.RemoveAllListeners();
+        deadzoneSlider.onValueChanged.RemoveAllListeners();
+
+        sensitivitySlider.onValueChanged.AddListener(SetSensitivity);
+        deadzoneSlider.onValueChanged.AddListener(SetDeadZone);
     }
 
     public void toggleMenu()
@@ -56,7 +80,8 @@ public class FastMenu : MonoBehaviour
 
     public void toggleControl()
     {
-        switch (GameSettings.controlMode) // rotera mellan 3 lägen
+        // Växla mellan control modes
+        switch (GameSettings.controlMode)
         {
             case ControlMode.Tilt:
                 GameSettings.controlMode = ControlMode.Joystick;
@@ -71,7 +96,7 @@ public class FastMenu : MonoBehaviour
                 break;
         }
 
-        UpdateControlUI(); // uppdatera UI efter byte
+        UpdateControlUI();
     }
 
     void UpdateControlUI()
@@ -81,7 +106,7 @@ public class FastMenu : MonoBehaviour
 
         calibrateButton.interactable = (GameSettings.controlMode == ControlMode.Tilt);
 
-        // byt ikon beroende på läge
+        // Byt ikon beroende på control mode
         switch (GameSettings.controlMode)
         {
             case ControlMode.Tilt:
@@ -100,10 +125,8 @@ public class FastMenu : MonoBehaviour
 
     public void Calibrate()
     {
-        // var tiltControl = GameObject.FindGameObjectWithTag("Player")
-        //                            .GetComponent<TiltControl>();
-
-        foreach (var tc in tiltControls) // NYTT: kalibrera alla
+        // Kalibrera alla bollar
+        foreach (var tc in tiltControls)
         {
             tc.Calibrate();
             Debug.Log("Calibration triggered on: " + tc.name);
@@ -128,9 +151,8 @@ public class FastMenu : MonoBehaviour
 
     public void SetSensitivity(float value)
     {
-        // tiltControl.SetSensitivity(value);
-
-        foreach (var tc in tiltControls) // NYTT: ändra alla
+        // Uppdatera alla bollar
+        foreach (var tc in tiltControls)
         {
             tc.SetSensitivity(value);
         }
@@ -138,9 +160,8 @@ public class FastMenu : MonoBehaviour
 
     public void SetDeadZone(float value)
     {
-        // tiltControl.SetDeadZone(value);
-
-        foreach (var tc in tiltControls) // NYTT: ändra alla
+        // Uppdatera alla bollar
+        foreach (var tc in tiltControls)
         {
             tc.SetDeadZone(value);
         }

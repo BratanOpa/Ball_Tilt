@@ -12,7 +12,7 @@ public static class GameSettings
     public static float sensitivity = 2.5f;
     public static float deadZone = 0.05f;
     public static float musicVolume = 0.5f;
-    public static float sfxVolume = 1f;
+    public static float sfxVolume = 3f;
     public static bool musicMuted = false;
 
     public static ControlMode controlMode = ControlMode.Tilt; 

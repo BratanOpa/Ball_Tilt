@@ -3,16 +3,21 @@ using UnityEngine.SceneManagement;
 
 public class SceneManagement : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private static bool uiLoaded = false; // håller koll globalt
+
     void Awake()
     {
-        print("Load UI Ssene!");
-        SceneManager.LoadScene("UI", LoadSceneMode.Additive);
-    }
+        if (!uiLoaded)
+        {
+            Debug.Log("Loading UI Scene (first time only)");
+            SceneManager.LoadScene("UI", LoadSceneMode.Additive);
+            uiLoaded = true;
+        }
+        else
+        {
+            Debug.Log("UI already loaded, skipping");
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+
     }
 }
