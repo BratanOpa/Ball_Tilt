@@ -671,7 +671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::FastMenu
   joystick: {fileID: 1376405496}
   sliderUI: {fileID: 815711401}
-  tiltControl: {fileID: 116103452439377848, guid: 599a23e52c6a39f49944adcb2b612d31, type: 3}
+  tiltControls: []
   calibrateButton: {fileID: 902178315}
   sensitivitySlider: {fileID: 969846728}
   deadzoneSlider: {fileID: 1679516348}
@@ -1353,6 +1353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b0f6faf9cbbae4ebe1ebe9d58dba2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SliderControl
+  xSlider: {fileID: 0}
+  ySlider: {fileID: 0}
 --- !u!1001 &830528806
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2501,9 +2503,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
-        m_MethodName: ToggleMusic
+      - m_Target: {fileID: 186282639}
+        m_TargetAssemblyTypeName: FastMenu, Assembly-CSharp
+        m_MethodName: toggleMusicButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
