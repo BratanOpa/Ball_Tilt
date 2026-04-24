@@ -99,6 +99,7 @@ public class TiltControl : MonoBehaviour
 
     public void Calibrate()
     {
+        print("offset calibrated");
         Vector3 tilt = Input.acceleration;
         offset = new Vector3(tilt.y, tilt.z, -tilt.x);
         GameSettings.calibrationOffset = offset;
