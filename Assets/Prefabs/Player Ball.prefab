@@ -158,13 +158,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d034012cb037b27b2a1601308cca1b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gravityControl
-  speed: 40
+  forceLimit: 10
   enableAccelerometer: 1
   offset: {x: 0, y: 0, z: 0}
-  sensitivity: 1
-  deadZone: 0
-  useTilt: 1
-  useJoystick: 0
+  enableVibration: 1
 --- !u!114 &6044394536692062664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::hazardDetection
   transition: {fileID: 3240813804223565110}
   spawnPosition: {fileID: 0}
+  hazardTags:
+  - Hole Hazard
 --- !u!114 &3240813804223565110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +207,7 @@ MonoBehaviour:
   playerDeathSFX: {fileID: 8300000, guid: 4aea327ad75a8654a9e47629b572e606, type: 3}
   audioSource: {fileID: 1730451179966850597}
   rollingSource: {fileID: 7054447879796955521}
+  isMainPlayer: 1
 --- !u!82 &1730451179966850597
 AudioSource:
   m_ObjectHideFlags: 0

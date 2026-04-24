@@ -5,9 +5,10 @@ using System.Collections;
 
 public class TiltControl : MonoBehaviour
 {
-    public float speed = 1f;
+    public float forceLimit;
     public bool enableAccelerometer = true;
     public Vector3 offset; //only needed if manual numeric offset?
+    public bool enableVibration = true; //styr om denna boll ska trigga vibration (undviker dubbel vibration ifall enemyball fins)
 
     private Joystick joystick;
     private SliderControl slider; //Two slider control, horizon/ vectical
@@ -16,15 +17,9 @@ public class TiltControl : MonoBehaviour
     private Vector3 lastVelocity;
 
     // Sensitivity & Deadzone
-    [Header("Tilt Settings")]
-    public float sensitivity = 1f;   // Multiplier for tilt strength
-    public float deadZone = 0.05f;  // Ignore small tilt noise
-    
-    
-    //public bool useTilt = true;
-    //public bool useJoystick = false;
-
-
+    //[Header("Tilt Settings")]
+    private float sensitivity = 1f;   // Multiplier for tilt strength
+    private float deadZone = 0.05f;  // Ignore small tilt noise
 
 
 
@@ -42,7 +37,14 @@ public class TiltControl : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.AddForce(getControl() * speed * Mathf.Pow(sensitivity, 2) * rb.mass);
+        // --- GAMMAL KOD (påverkades av mass och clampade kraft konstigt) ---
+        // rb.AddForce(Vector3.ClampMagnitude(getControl() * forceLimit * rb.mass, forceLimit));
+
+        // --- NY KOD ---
+        // Använd Acceleration så att mass inte påverkar känslan
+        Vector3 input = getControl();
+        rb.AddForce(input * forceLimit, ForceMode.Acceleration);
+
         chechImpactVibration();
     }
 
@@ -51,9 +53,10 @@ public class TiltControl : MonoBehaviour
         float deltaV = (rb.linearVelocity - lastVelocity).magnitude;
         lastVelocity = rb.linearVelocity;
 
-        if (deltaV > 1)
+        if (deltaV > 1 && enableVibration)
         {
-            Vibration.Vibrate((int)deltaV * 20);
+            //Vibration.Vibrate(Mathf.Clamp((int)deltaV * 20, 0, 500));
+            Vibration.Vibrate(1);
         }
     }
     public Vector3 getLastVelocity()
@@ -66,31 +69,54 @@ public class TiltControl : MonoBehaviour
         Vector3 control = Vector3.zero;
 
         
-        switch (GameSettings.controlMode) //  v�lj input-l�ge  tilt , joystick eller slider
+        switch (GameSettings.controlMode) //  välj input-läge  tilt , joystick eller slider
         {
             case ControlMode.Tilt:
                 if (enableAccelerometer)
                 {
                     Vector3 tilt = Input.acceleration;
-                    control = new Vector3(tilt.y, tilt.z, -tilt.x) - offset;
 
-                    if (Mathf.Abs(control.x) < deadZone) control.x = 0;
-                    if (Mathf.Abs(control.y) < deadZone) control.y = 0;
-                    if (Mathf.Abs(control.z) < deadZone) control.z = 0;
+                    // --- GAMMAL KOD (tog bort eftersom sensitivity påverkade kraft direkt) ---
+                    // control = (new Vector3(tilt.y, tilt.z, -tilt.x) - offset) * Mathf.Pow(sensitivity, 2);
+                    // control.y = 0;
+                    //
+                    // if (Mathf.Abs(control.x) < deadZone) control.x = 0;
+                    // if (Mathf.Abs(control.y) < deadZone) control.y = 0;
+                    // if (Mathf.Abs(control.z) < deadZone) control.z = 0;
+
+                    // --- NY KOD ---
+                    // 1. Läs raw tilt och ta bort offset
+                    Vector3 raw = new Vector3(tilt.y, 0, -tilt.x) - new Vector3(offset.x, 0, offset.z);
+
+                    // 2. Räkna ut hur mycket telefonen lutar (styrka)
+                    // --- NY KOD ---
+                    // Deadzone + sensitivity per axel (fixar asymmetri fram/bak)
+
+
+
+                    // X-axis
+                    raw.x = ApplyDeadzoneAndSensitivity(raw.x);
+
+                    // Z-axis
+                    raw.z = ApplyDeadzoneAndSensitivity(raw.z);
+
+                    // 6. Sätt slutlig kontroll (max alltid 1, oberoende av sensitivity)
+                    control = raw;
                 }
                 break;
 
             case ControlMode.Joystick:
                 if (joystick != null)
                 {
-                    control = new Vector3(joystick.getPosition().y, 0, -joystick.getPosition().x) / 4;
+                    control = new Vector3(joystick.getPosition().y, 0, -joystick.getPosition().x);
+                    print(control);
                 }
                 break;
 
             case ControlMode.Slider:
                 if (slider != null)
                 {
-                    control = new Vector3(slider.GetY(), 0, -slider.GetX()) / 4;
+                    control = new Vector3(slider.GetY(), 0, -slider.GetX());
                 }
                 break;
         }
@@ -102,13 +128,30 @@ public class TiltControl : MonoBehaviour
         return control;
     }
 
+
+    float ApplyDeadzoneAndSensitivity(float value)
+    {
+        float abs = Mathf.Abs(value);
+
+        if (abs < deadZone)
+            return 0f;
+
+        // skala från deadzone → 1
+        float adjusted = (abs - deadZone) / (1f - deadZone);
+
+        // sensitivity kurva
+        float exponent = Mathf.Lerp(2.5f, 0.5f, (sensitivity - 0.3f) / (5f - 0.3f));
+        adjusted = Mathf.Pow(adjusted, exponent);
+
+        // återställ riktning
+        return Mathf.Sign(value) * adjusted;
+    }
+
     public void Calibrate()
     {
         Vector3 tilt = Input.acceleration;
         offset = new Vector3(tilt.y, tilt.z, -tilt.x);
         GameSettings.calibrationOffset = offset;
-
-
 
     }
 

@@ -27,23 +27,62 @@ public class hazardDetection : MonoBehaviour
         {
             if (other.CompareTag(tag))
             {
-                isRespawning = true;
-                StartCoroutine(Respawn());
+                TriggerRespawnAll(); // gemensam funktion
                 break;
             }
         }
     }
-    
+
+    //hantera kollision mellan bollar
+    private void OnCollisionEnter(Collision other)
+    {
+        if (isRespawning) return;
+
+        // kolla om vi träffar en annan boll (har samma script)
+        if (other.gameObject.GetComponent<hazardDetection>() != null)
+        {
+            TriggerRespawnAll(); //  samma death som hazard
+        }
+    }
+
+    void TriggerRespawnAll()
+    {
+        isRespawning = true;
+
+        foreach (var ball in FindObjectsByType<hazardDetection>(FindObjectsSortMode.None))
+        {
+            ball.StartCoroutine(ball.Respawn());
+        }
+    }
+
+
+
     IEnumerator Respawn()
     {
         transition.ActivateHazardHoleDeathAnimation();
 
-        rb.isKinematic = true; // freezes the ball
+        //rb.isKinematic = true;
 
-        yield return new WaitForSeconds(1.4f);
-        transform.position = spawnPosition.position;
+      
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
 
-        rb.isKinematic = false;
+
+        // Hitta slider och resetta input
+        var slider = FindFirstObjectByType<SliderControl>();
+        if (slider != null)
+        {
+            slider.ResetToCenter();
+        }
+
+
+        yield return new WaitForSeconds(1.2f);
+
+        rb.MovePosition(spawnPosition.position);
+
+        yield return new WaitForFixedUpdate(); 
+
+        //rb.isKinematic = false;
 
         isRespawning = false;
     }
