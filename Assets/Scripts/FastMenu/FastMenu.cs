@@ -9,7 +9,7 @@ public class FastMenu : MonoBehaviour
     public GameObject joystick;
     public GameObject sliderUI;
 
-    public TiltControl[] tiltControls; // stöd för flera bollar
+    public TiltControl[] tiltControls; // stï¿½d fï¿½r flera bollar
 
     public Button calibrateButton;
     public Slider sensitivitySlider;
@@ -34,7 +34,7 @@ public class FastMenu : MonoBehaviour
 
 
 
-        // Hämta alla bollar i scenen
+        // Hï¿½mta alla bollar i scenen
         tiltControls = FindObjectsByType<TiltControl>(FindObjectsSortMode.None);
         Debug.Log("TiltControls found: " + tiltControls.Length);
 
@@ -42,14 +42,14 @@ public class FastMenu : MonoBehaviour
 
         settingsPanel.SetActive(false);
 
-        // --- SÄTT INITIALA VÄRDEN PÅ SLIDERS (viktigt att göra före listeners) ---
+        // --- Sï¿½TT INITIALA Vï¿½RDEN Pï¿½ SLIDERS (viktigt att gï¿½ra fï¿½re listeners) ---
         sensitivitySlider.value = GameSettings.sensitivity;
         deadzoneSlider.value = GameSettings.deadZone;
         musicSlider.value = GameSettings.musicVolume;
         volumeSlider.value = GameSettings.sfxVolume;
 
         // --- KOPPLA SLIDERS TILL AUDIO MANAGER (via singleton) ---
-        // Tar bort gamla listeners först för att undvika duplicates om UI laddas flera gånger
+        // Tar bort gamla listeners fï¿½rst fï¿½r att undvika duplicates om UI laddas flera gï¿½nger
         var audio = AudioManager.Instance;
 
         if (audio != null)
@@ -80,7 +80,7 @@ public class FastMenu : MonoBehaviour
 
     public void toggleControl()
     {
-        // Växla mellan control modes
+        // Vï¿½xla mellan control modes
         switch (GameSettings.controlMode)
         {
             case ControlMode.Tilt:
@@ -106,7 +106,7 @@ public class FastMenu : MonoBehaviour
 
         calibrateButton.interactable = (GameSettings.controlMode == ControlMode.Tilt);
 
-        // Byt ikon beroende på control mode
+        // Byt ikon beroende pï¿½ control mode
         switch (GameSettings.controlMode)
         {
             case ControlMode.Tilt:
@@ -160,11 +160,7 @@ public class FastMenu : MonoBehaviour
 
     public void SetDeadZone(float value)
     {
-        // Uppdatera alla bollar
-        foreach (var tc in tiltControls)
-        {
-            tc.SetDeadZone(value);
-        }
+        GameSettings.deadZone = value;
     }
 
     public void toggleMusicButton()
