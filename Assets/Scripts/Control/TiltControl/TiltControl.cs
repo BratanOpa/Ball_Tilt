@@ -35,7 +35,6 @@ public class TiltControl : MonoBehaviour
     void FixedUpdate()
     {
         rb.AddForce(Vector3.ClampMagnitude(getControl() * forceLimit, forceLimit), ForceMode.Acceleration);
-        print(getControl());
         chechImpactVibration();
     }
 
