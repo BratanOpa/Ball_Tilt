@@ -64,9 +64,8 @@ public class TiltControl : MonoBehaviour
             case ControlMode.Tilt:
                 if (enableAccelerometer)
                 {
-                    Vector3 tilt = Input.acceleration;
-                    control = (new Vector3(tilt.y, tilt.z, -tilt.x) - offset) * Mathf.Pow(sensitivity, 2);
-                    control.y = 0;  //No extra gravitation
+                    Vector3 tiltVector = (Input.acceleration - GameSettings.calibrationOffset) * Mathf.Pow(sensitivity, 2);
+                    control = new Vector3(tiltVector.y, 0, -tiltVector.x);
 
                     if (control.magnitude > GameSettings.deadZone)
                     {
@@ -99,14 +98,6 @@ public class TiltControl : MonoBehaviour
         control += Keyboard.getWASD();  //Keyboard
 
         return control;
-    }
-
-    public void Calibrate()
-    {
-        Vector3 tilt = Input.acceleration;
-        offset = new Vector3(tilt.y, tilt.z, -tilt.x);
-        GameSettings.calibrationOffset = offset;
-
     }
 
     //Sensitivity slider hook

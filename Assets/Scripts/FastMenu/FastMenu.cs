@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class FastMenu : MonoBehaviour
@@ -125,12 +126,7 @@ public class FastMenu : MonoBehaviour
 
     public void Calibrate()
     {
-        // Kalibrera alla bollar
-        foreach (var tc in tiltControls)
-        {
-            tc.Calibrate();
-            Debug.Log("Calibration triggered on: " + tc.name);
-        }
+        GameSettings.calibrationOffset = Input.acceleration;
     }
 
     public void OpenSettings()
