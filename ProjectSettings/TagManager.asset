@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Hole Hazard
   - Wall
+  - stoveOn
+  - stoveOff
   layers:
   - Default
   - TransparentFX
