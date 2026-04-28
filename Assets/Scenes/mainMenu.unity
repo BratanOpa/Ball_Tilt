@@ -1665,6 +1665,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadSceneButton
   sceneName: s
+  clickSound: {fileID: 0}
 --- !u!1 &861250662
 GameObject:
   m_ObjectHideFlags: 0
@@ -1937,6 +1938,7 @@ MonoBehaviour:
   - {fileID: 201482844}
   - {fileID: 158462027}
   - {fileID: 556152840}
+  clickSound: {fileID: 8300000, guid: 4a6049782cff9be4888dba1a1ad3f755, type: 3}
 --- !u!1001 &1046493239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2288,6 +2290,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadSceneButton
   sceneName: tutorialLevel1
+  clickSound: {fileID: 0}
 --- !u!224 &1324408762 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 511090870197762913, guid: 1f1ebcf710a377145843f99cb31b84f2, type: 3}
@@ -2704,6 +2707,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
   mainMenu: {fileID: 1581850810}
   levelMenu: {fileID: 970772598}
+  clickSound: {fileID: 8300000, guid: 4a6049782cff9be4888dba1a1ad3f755, type: 3}
   animator: {fileID: 1614587942}
 --- !u!61 &1614587941
 BoxCollider2D:
@@ -3270,6 +3274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadSceneButton
   sceneName: dsvLevel1
+  clickSound: {fileID: 0}
 --- !u!1001 &8737857592565818073
 PrefabInstance:
   m_ObjectHideFlags: 0

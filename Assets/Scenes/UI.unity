@@ -962,6 +962,7 @@ MonoBehaviour:
   calibrateButton: {fileID: 257287602}
   sensitivitySlider: {fileID: 2102162281}
   deadzoneSlider: {fileID: 1385224483}
+  clickSound: {fileID: 8300000, guid: 4a6049782cff9be4888dba1a1ad3f755, type: 3}
   musicSlider: {fileID: 421769302}
   volumeSlider: {fileID: 153933889}
   toggleMuted: {fileID: 1338472620}

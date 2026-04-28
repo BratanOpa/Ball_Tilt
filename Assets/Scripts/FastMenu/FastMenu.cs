@@ -15,6 +15,9 @@ public class FastMenu : MonoBehaviour
     public Button calibrateButton;
     public Slider sensitivitySlider;
     public Slider deadzoneSlider;
+
+    [Header("Sound")]
+    public AudioClip clickSound;
     public Slider musicSlider;
     public Slider volumeSlider;
     public Toggle toggleMuted;
@@ -82,6 +85,7 @@ public class FastMenu : MonoBehaviour
     public void toggleMenu()
     {
         animator.SetTrigger("Toggle");
+        AudioManager.Instance.PlaySFX(clickSound);
     }
 
     public void toggleControl()
@@ -101,7 +105,7 @@ public class FastMenu : MonoBehaviour
                 GameSettings.controlMode = ControlMode.Tilt;
                 break;
         }
-
+        AudioManager.Instance.PlaySFX(clickSound);
         UpdateControlUI();
     }
 
@@ -131,11 +135,13 @@ public class FastMenu : MonoBehaviour
 
     public void Calibrate()
     {
+        AudioManager.Instance.PlaySFX(clickSound);
         GameSettings.calibrationOffset = Input.acceleration;
     }
 
     public void OpenSettings()
     {
+        AudioManager.Instance.PlaySFX(clickSound);
         settingsPanel.SetActive(true);
 
         if (fastMenu != null)
@@ -144,6 +150,7 @@ public class FastMenu : MonoBehaviour
 
     public void CloseSettings()
     {
+        AudioManager.Instance.PlaySFX(clickSound);
         settingsPanel.SetActive(false);
 
         if (fastMenu != null)
