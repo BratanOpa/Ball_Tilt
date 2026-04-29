@@ -13,6 +13,8 @@ public class kitchenStove : MonoBehaviour
     [SerializeField] private Color onColor = Color.red;
     [SerializeField] private Color offColor = Color.white;
     [SerializeField] private float transitionDuration = 1f;
+    [Header("Particle System")]
+    [SerializeField] private ParticleSystem stoveParticleSystem;
 
     private Renderer stoveRenderer;
     private bool isOn = false;
@@ -50,7 +52,7 @@ public class kitchenStove : MonoBehaviour
     {
         isOn = !isOn;
 
-        // Sätt alltid till stoveOff under övergången
+      
         gameObject.tag = "stoveOff";
 
         StopAllCoroutines();
@@ -77,7 +79,9 @@ public class kitchenStove : MonoBehaviour
         stoveRenderer.material.color = targetColor;
 
        
-        if (setOnWhenDone)
+        if (setOnWhenDone){
             gameObject.tag = "stoveOn";
+            Instantiate(stoveParticleSystem, transform.parent);
+        }
     }
 }
