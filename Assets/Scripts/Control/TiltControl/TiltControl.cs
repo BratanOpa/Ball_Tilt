@@ -6,7 +6,6 @@ using System.Collections;
 public class TiltControl : MonoBehaviour
 {
     public float forceLimit;
-    public bool enableAccelerometer = true;
     public Vector3 offset; //only needed if manual numeric offset?
     public bool enableVibration = true; //styr om denna boll ska trigga vibration (undviker dubbel vibration ifall enemyball fins)
 
@@ -30,6 +29,10 @@ public class TiltControl : MonoBehaviour
         offset = GameSettings.calibrationOffset;
         sensitivity = GameSettings.sensitivity;
 
+        if (SystemInfo.supportsGyroscope)
+        {
+            Input.gyro.enabled = true;
+        }
     }
 
     void FixedUpdate()
@@ -61,22 +64,20 @@ public class TiltControl : MonoBehaviour
         switch (GameSettings.controlMode) //  v�lj input-l�ge  tilt , joystick eller slider
         {
             case ControlMode.Tilt:
-                if (enableAccelerometer)
+
+                Vector3 g = (Input.gyro.gravity - GameSettings.calibrationOffset) * Mathf.Pow(sensitivity, 2);
+                control = new Vector3(g.y, 0, -g.x);
+
+                if (control.magnitude > GameSettings.deadZone)
                 {
-                    Vector3 tiltVector = (Input.acceleration - GameSettings.calibrationOffset) * Mathf.Pow(sensitivity, 2);
-                    control = new Vector3(tiltVector.y, 0, -tiltVector.x);
-
-                    if (control.magnitude > GameSettings.deadZone)
-                    {
-                        float force = (control.magnitude - GameSettings.deadZone) / (1f - GameSettings.deadZone);
-                        control = control.normalized * force;    // dir * force
-                    }
-                    else
-                    {
-                        control = Vector3.zero;
-                    }
-
+                    float force = (control.magnitude - GameSettings.deadZone) / (1f - GameSettings.deadZone);
+                    control = control.normalized * force;    // dir * force
                 }
+                else
+                {
+                    control = Vector3.zero;
+                }
+
                 break;
 
             case ControlMode.Joystick:

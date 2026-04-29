@@ -136,7 +136,7 @@ public class FastMenu : MonoBehaviour
     public void Calibrate()
     {
         AudioManager.Instance.PlaySFX(clickSound);
-        GameSettings.calibrationOffset = Input.acceleration;
+        GameSettings.calibrationOffset = Input.gyro.gravity;
     }
 
     public void OpenSettings()
