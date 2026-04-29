@@ -21,9 +21,7 @@ public class BounceWall : MonoBehaviour
             // Calculate direction based on the trampoline's rotation
             // transform.up works whether it's on floor (up), wall (sideways), etc.
             Vector3 bounceDirection = transform.up;
-
-            rb.linearVelocity = new Vector3(0, 0f, 0);
-
+            
             rb.linearVelocity = bounceDirection.normalized * bounceForce;
             Debug.Log("Boing!");
         }
