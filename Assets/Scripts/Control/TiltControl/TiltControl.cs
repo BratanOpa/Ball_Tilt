@@ -9,7 +9,7 @@ public class TiltControl : MonoBehaviour
     public Vector3 offset; //only needed if manual numeric offset?
     public bool enableVibration = true; //styr om denna boll ska trigga vibration (undviker dubbel vibration ifall enemyball fins)
 
-    private Joystick joystick;
+    private JoystickInterface joystick;
     private SliderControl slider; //Two slider control, horizon/ vectical
     private Rigidbody rb;
     //private Vector3 control;    //Control of tilt, can be tilt, WASD, Joystick
@@ -24,7 +24,7 @@ public class TiltControl : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.interpolation = RigidbodyInterpolation.Interpolate;  // Makes ball render in higher (120) fps while physics has 50 tps, smooth graphics
-        joystick = FindFirstObjectByType<Joystick>();
+        //joystick = FindFirstObjectByType<Joystick>();
 
         offset = GameSettings.calibrationOffset;
         sensitivity = GameSettings.sensitivity;
@@ -108,7 +108,7 @@ public class TiltControl : MonoBehaviour
 
     }
 
-    public void SetJoystick(Joystick joystick)
+    public void SetJoystick(JoystickInterface joystick)
     {
         this.joystick = joystick;
     }
