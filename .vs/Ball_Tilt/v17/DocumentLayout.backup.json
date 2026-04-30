@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\",
+  "WorkspaceRootPath": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\",
   "Documents": [
     {
       "AbsoluteMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|c:\\users\\albin\\onedrive\\dokument\\github\\ball_tilt\\assets\\scripts\\menu\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,8 +23,8 @@
       "RelativeMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\level scripts\\scenemanagement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\assets\\scripts\\menu\\gamesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\menu\\gamesettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\assets\\scripts\\player ball\\playersoundscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player ball\\playersoundscript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\assets\\scripts\\control\\joystick\\ifnoeventsystemthencreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -63,7 +63,7 @@
       "RelativeMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player ball\\hazarddetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\assets\\scripts\\menu\\mainmenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\assets\\scripts\\menu\\mainmenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E36B376B-55CB-9770-B4CE-0474224D251D}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\menu\\mainmenucontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -169,9 +169,9 @@
               "$type": "Document",
               "DocumentIndex": 10,
               "Title": "TransitionManager.cs",
-              "DocumentMoniker": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Player Ball\\TransitionManager.cs",
+              "DocumentMoniker": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Player Ball\\TransitionManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player Ball\\TransitionManager.cs",
-              "ToolTip": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Player Ball\\TransitionManager.cs",
+              "ToolTip": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Player Ball\\TransitionManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player Ball\\TransitionManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -181,22 +181,21 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "playerSoundScript.cs",
-              "DocumentMoniker": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Player Ball\\playerSoundScript.cs",
+              "DocumentMoniker": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Player Ball\\playerSoundScript.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Player Ball\\playerSoundScript.cs",
-              "ToolTip": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Player Ball\\playerSoundScript.cs",
+              "ToolTip": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Player Ball\\playerSoundScript.cs",
               "RelativeToolTip": "Assets\\Scripts\\Player Ball\\playerSoundScript.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAABYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-14T08:38:09.28Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-14T08:38:09.28Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "GameSettings.cs",
-              "DocumentMoniker": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\GameSettings.cs",
+              "DocumentMoniker": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\GameSettings.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Menu\\GameSettings.cs",
-              "ToolTip": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\GameSettings.cs",
+              "ToolTip": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\GameSettings.cs",
               "RelativeToolTip": "Assets\\Scripts\\Menu\\GameSettings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -218,9 +217,9 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AudioManager.cs",
-              "DocumentMoniker": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\AudioManager.cs",
+              "DocumentMoniker": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\AudioManager.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Menu\\AudioManager.cs",
-              "ToolTip": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\AudioManager.cs",
+              "ToolTip": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\AudioManager.cs",
               "RelativeToolTip": "Assets\\Scripts\\Menu\\AudioManager.cs",
               "ViewState": "AgIAAEcAAAAAAAAAAAAIwGkAAABtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -279,9 +278,9 @@
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "MainMenuController.cs",
-              "DocumentMoniker": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\MainMenuController.cs",
+              "DocumentMoniker": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\MainMenuController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Menu\\MainMenuController.cs",
-              "ToolTip": "C:\\Users\\albin\\OneDrive\\Dokument\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\MainMenuController.cs",
+              "ToolTip": "C:\\Users\\spiro\\Documents\\GitHub\\Ball_Tilt\\Assets\\Scripts\\Menu\\MainMenuController.cs",
               "RelativeToolTip": "Assets\\Scripts\\Menu\\MainMenuController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBMAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
