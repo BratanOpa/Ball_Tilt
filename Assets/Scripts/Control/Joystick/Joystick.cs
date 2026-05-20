@@ -12,10 +12,13 @@ public class Joystick : MonoBehaviour, JoystickInterface, IDragHandler, IPointer
 
     public void OnEnable()
     {
-        TiltControl tiltControl = FindFirstObjectByType<TiltControl>();
-        if(tiltControl != null)
+        var tiltControls = FindObjectsByType<TiltControl>(FindObjectsSortMode.None);
+        foreach (var tc in tiltControls)
         {
-            tiltControl.SetJoystick(this);
+            if (tc != null)
+            {
+                tc.SetJoystick(this);
+            }
         }
     }
 

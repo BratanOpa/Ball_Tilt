@@ -13,10 +13,13 @@ public class JoystickTouch : MonoBehaviour, JoystickInterface, IDragHandler, IPo
 
     public void OnEnable()
     {
-        TiltControl tiltControl = FindFirstObjectByType<TiltControl>();
-        if (tiltControl != null)
+        var tiltControls = FindObjectsByType<TiltControl>(FindObjectsSortMode.None);
+        foreach (var tc in tiltControls)
         {
-            tiltControl.SetJoystick(this);
+            if (tc != null)
+            {
+                tc.SetJoystick(this);
+            }
         }
         images = GetComponentsInChildren<Image>();
         DisableImages();

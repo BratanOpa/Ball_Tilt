@@ -8,7 +8,7 @@ public class SaveManager : MonoBehaviour
         7, // Tutorial har 7 levels
         3,  // Illusion har 3 levels
         2, // Golf har 2 levels
-        2, // DSV har 2 levels
+        3, // DSV har 3 levels
         3 // Kitchen har 3 levels
         
     };
