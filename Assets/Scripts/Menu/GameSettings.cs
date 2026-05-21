@@ -27,5 +27,18 @@ public static class GameSettings
     public static JoystickMode joystickMode = JoystickMode.Left;
 
     public static Vector3 calibrationOffset;
-   
+
+    public static void ResetToDefaults()
+    {
+        sensitivity = 2.5f;
+        deadZone = 0.05f;
+        musicVolume = 0.5f;
+        sfxVolume = 3f;
+        musicMuted = false;
+
+        controlMode = ControlMode.Tilt;
+        joystickMode = JoystickMode.Left;
+
+        calibrationOffset = Vector3.zero;
+    }
 }

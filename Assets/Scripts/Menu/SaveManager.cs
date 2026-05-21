@@ -194,10 +194,15 @@ public class SaveManager : MonoBehaviour
     public static void ResetAllData()
     {
         PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
+        
+
+        GameSettings.ResetToDefaults();
+        saveSettings();
+
 
         Debug.Log("Alla PlayerPrefs har raderats.");
     }
+
 
     // raderar bara level- och world-progress, behåller settings
     public static void ResetLevelData()
