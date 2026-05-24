@@ -133,7 +133,7 @@ public class WorldSelector : MonoBehaviour
         // Visa completion % för världen
         int percent = SaveManager.getWorldCompletionPercentage(worldIndex);
 
-        completionText.text = percent + "%";
+        completionText.text = "Completion: " + percent + "%";
 
         int collected = SaveManager.GetWorldCollectedCoins(worldIndex);
 
