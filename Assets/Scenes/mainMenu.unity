@@ -2899,6 +2899,8 @@ MonoBehaviour:
   - {fileID: 34255830}
   lockImage: {fileID: 1335148216}
   completionText: {fileID: 1608637639}
+  slideTime: 0.5
+  slideDistance: 3500
 --- !u!1001 &1046493239
 PrefabInstance:
   m_ObjectHideFlags: 0
