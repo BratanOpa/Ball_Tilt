@@ -32,12 +32,9 @@ public class WinScreenUI : MonoBehaviour
         panel.SetActive(true);
 
         Time.timeScale = 0f;
-        /*
-        coinsText.text =
-            CoinManager.Instance.collectedCoins +
-            " / " +
-            CoinManager.Instance.totalCoins;
-        */
+
+        coinsText.text = "Coins collected: " + CoinManager.Instance.collectedCoins + " / " + CoinManager.Instance.totalCoins;
+
         animator.SetTrigger("Win");
     }
 
@@ -48,6 +45,8 @@ public class WinScreenUI : MonoBehaviour
         panel.SetActive(false);
 
         SceneManager.LoadScene(nextScene);
+        CoinManager.Instance.ResetCoins();
+
     }
 
     public void ExitToMenu()
@@ -56,6 +55,8 @@ public class WinScreenUI : MonoBehaviour
 
         panel.SetActive(false);
 
-        SceneManager.LoadScene("MainMenu");
+        CoinManager.Instance.ResetCoins();
+        SceneManager.LoadScene("mainMenu");
+
     }
 }

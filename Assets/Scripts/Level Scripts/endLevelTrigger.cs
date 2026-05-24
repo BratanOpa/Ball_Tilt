@@ -19,6 +19,10 @@ public class endLevelTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             finished = true;
+            PlayerPrefs.SetString("NextLevel", nextSceneIs);
+
+            int globalLevel = SaveManager.GetGlobalLevelIndex(currentWorld, currentLevel);
+
 
             ChangeLevel();
         }
@@ -28,10 +32,19 @@ public class endLevelTrigger : MonoBehaviour
         int globalLevel = SaveManager.GetGlobalLevelIndex(currentWorld, currentLevel);
 
         SaveManager.completeLevel(globalLevel);
+
+        SaveManager.SaveLevelCoins(globalLevel, CoinManager.Instance.collectedCoins);
+
+        SaveManager.SaveLevelTotalCoins(globalLevel, CoinManager.Instance.totalCoins);
+
         SaveManager.checkWorldUnlock(currentWorld); // Kolla om nästa värld ska låsas upp
-        SceneManager.LoadScene(nextSceneIs, LoadSceneMode.Single);
 
         WinScreenUI.Instance.Show(nextSceneIs);
+    }
+
+    public string GetNextLevelName()
+    {
+        return nextSceneIs;
     }
 
 }

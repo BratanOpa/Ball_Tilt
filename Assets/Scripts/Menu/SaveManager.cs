@@ -132,6 +132,7 @@ public class SaveManager : MonoBehaviour
         }
     }
 
+
     // Konverterar local level index till globalt level index
     //
     // Exempel:
@@ -194,7 +195,7 @@ public class SaveManager : MonoBehaviour
     public static void ResetAllData()
     {
         PlayerPrefs.DeleteAll();
-        
+
 
         GameSettings.ResetToDefaults();
         saveSettings();
@@ -248,6 +249,77 @@ public class SaveManager : MonoBehaviour
         PlayerPrefs.Save();
 
         Debug.Log("Alla levels upplåsta!");
+    }
+
+
+    //COINS
+
+    // Sparar det högsta antalet coins spelaren samlat i en level
+    public static void SaveLevelCoins(int globalLevelIndex, int collectedCoins)
+    {
+        int previousBest =
+            PlayerPrefs.GetInt("levelCoins_" + globalLevelIndex, 0);
+
+        // Sparar bara högsta coin count
+        if (collectedCoins > previousBest)
+        {
+            PlayerPrefs.SetInt("levelCoins_" + globalLevelIndex, collectedCoins);
+
+            PlayerPrefs.Save();
+        }
+    }
+
+    // Sparar det totala antalet coins i en level (för att visa i level select)
+    public static void SaveLevelTotalCoins(int globalLevelIndex, int totalCoins)
+    {
+        PlayerPrefs.SetInt("levelTotalCoins_" + globalLevelIndex,totalCoins);
+
+        PlayerPrefs.Save();
+    }
+
+    // Hämtar det högsta antalet coins spelaren samlat i en värld (för att visa i level select)
+    public static int GetWorldCollectedCoins(int worldIndex)
+    {
+        int collected = 0;
+
+        int startLevel = 1;
+
+        for (int i = 0; i < worldIndex - 1; i++)
+        {
+            startLevel += worldLevelCounts[i];
+        }
+
+        int totalLevels = worldLevelCounts[worldIndex - 1];
+
+        for (int i = startLevel;i < startLevel + totalLevels;i++)
+        {
+            collected += PlayerPrefs.GetInt("levelCoins_" + i,0);
+        }
+
+        return collected;
+    }
+    // Hämtar det totala antalet coins i en värld (för att visa i level select)
+    public static int GetWorldTotalCoins(int worldIndex)
+    {
+        int total = 0;
+
+        int startLevel = 1;
+
+        for (int i = 0; i < worldIndex - 1; i++)
+        {
+            startLevel += worldLevelCounts[i];
+        }
+
+        int totalLevels = worldLevelCounts[worldIndex - 1];
+
+        for (int i = startLevel;
+             i < startLevel + totalLevels;
+             i++)
+        {
+            total += PlayerPrefs.GetInt("levelTotalCoins_" + i,0);
+        }
+
+        return total;
     }
 
 

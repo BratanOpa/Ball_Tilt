@@ -13,6 +13,7 @@ public class WorldSelector : MonoBehaviour
     [SerializeField] private Button[] worldButtons;
     [SerializeField] private GameObject lockImage;
     [SerializeField] private TextMeshProUGUI completionText;
+    [SerializeField] private TextMeshProUGUI coinsText;
 
     void Start()
     {
@@ -71,6 +72,14 @@ public class WorldSelector : MonoBehaviour
         int percent = SaveManager.getWorldCompletionPercentage(worldIndex);
 
         completionText.text = percent + "%";
+
+        int collected = SaveManager.GetWorldCollectedCoins(worldIndex);
+
+        int total = SaveManager.GetWorldTotalCoins(worldIndex);
+
+        coinsText.text = "Coins: " + collected + " / " + total;
+
+
     }
 
     // Uppdaterar världen som visas just nu
