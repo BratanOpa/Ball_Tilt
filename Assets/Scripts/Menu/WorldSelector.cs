@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
+using static System.TimeZoneInfo;
+using UnityEditor.Rendering.LookDev;
 
 // Hanterar world selection-menyn
 public class WorldSelector : MonoBehaviour
@@ -15,6 +18,10 @@ public class WorldSelector : MonoBehaviour
     [SerializeField] private TextMeshProUGUI completionText;
     [SerializeField] private TextMeshProUGUI coinsText;
 
+    [SerializeField] private float slideTime = 0.5f;
+    [SerializeField] private float slideDistance = 1920f;
+    private bool isSliding=false;
+
     void Start()
     {
         ShowWorld(currentWorld);
@@ -23,13 +30,16 @@ public class WorldSelector : MonoBehaviour
     // Byter till nästa world
     public void NextWorld()
     {
-        currentWorld++;
+        if (isSliding) 
+            return;
+
+        int nextWorld = currentWorld + 1;
 
         // Börja om från början om vi passerar sista
-        if (currentWorld >= worlds.Length)
-            currentWorld = 0;
+        if (nextWorld >= worlds.Length)
+            nextWorld = 0;
 
-        ShowWorld(currentWorld);
+        StartCoroutine(slideWorlds(currentWorld, nextWorld, true)); //true/right
 
         AudioManager.Instance.PlaySFX(clickSound);
     }
@@ -37,15 +47,67 @@ public class WorldSelector : MonoBehaviour
     // Byter till föregående world
     public void PreviousWorld()
     {
-        currentWorld--;
+        if (isSliding)
+            return;
+
+        int prevWorld = currentWorld - 1;
 
         // Hoppa till sista världen om vi går under 0
-        if (currentWorld < 0)
-            currentWorld = worlds.Length - 1;
+        if (prevWorld < 0)
+            prevWorld = worlds.Length - 1;
 
-        ShowWorld(currentWorld);
+        StartCoroutine(slideWorlds(currentWorld, prevWorld, false)); //false/left
 
         AudioManager.Instance.PlaySFX(clickSound);
+    }
+
+    private IEnumerator slideWorlds(int fromIndex, int toIndex, bool direction) // direction true/right & false/left
+    {
+        isSliding = true;
+        // inte samma prev och next som i förra, här är "prev" den nuvarande
+        // och next blir den som man byter till (oavsett riktning)
+        GameObject prevWorld = worlds[fromIndex];
+        GameObject nextWorld = worlds[toIndex];
+        RectTransform prevRect = prevWorld.GetComponent<RectTransform>();
+        RectTransform nextRect = nextWorld.GetComponent<RectTransform>();
+
+        nextWorld.SetActive(true); // visar nya världen
+
+        float dirValue = direction ? 1f : -1f;
+
+        Vector2 prevStart = Vector2.zero;
+        // hade problem med canvas directioner, vet inte vad albin gjorde med dem
+        Vector2 prevEnd = Vector2.up * slideDistance * dirValue;
+        Vector2 nextStart = Vector2.down * slideDistance * dirValue;
+        Vector2 nextEnd = Vector2.zero;
+
+        nextRect.anchoredPosition = nextStart;
+        float elapsed = 0f;
+
+        while (elapsed < slideTime)
+        {
+            elapsed += Time.deltaTime;
+
+            float t = elapsed / slideTime;
+
+            t = Mathf.SmoothStep(0, 1, t);
+
+            prevRect.anchoredPosition = Vector2.Lerp(prevStart, prevEnd, t);
+            nextRect.anchoredPosition = Vector2.Lerp(nextStart, nextEnd, t);
+
+            yield return null;
+        }
+
+        // frys rörelsen
+        prevRect.anchoredPosition = Vector2.zero;
+        nextRect.anchoredPosition = Vector2.zero;
+        
+        // göm gammal vis a ny
+        prevWorld.SetActive(false);
+        currentWorld = toIndex;
+        ShowWorld(currentWorld);
+
+        isSliding = false;
     }
 
     // Visar vald world och uppdaterar UI
