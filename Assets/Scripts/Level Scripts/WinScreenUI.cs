@@ -10,8 +10,12 @@ public class WinScreenUI : MonoBehaviour
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI coinsText;
 
-    [Header("Animation")]
-    [SerializeField] private Animator animator;
+    [Header("Particles")]
+    [SerializeField] private ParticleSystem winParticles;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip winSound;
+    private AudioSource[] playerAudioSources;
 
     private string nextScene;
 
@@ -31,18 +35,38 @@ public class WinScreenUI : MonoBehaviour
 
         panel.SetActive(true);
 
+        GameSettings.freezeScreenActive = true;
+
+
         Time.timeScale = 0f;
 
         coinsText.text = "Coins collected: " + CoinManager.Instance.collectedCoins + " / " + CoinManager.Instance.totalCoins;
+        AudioManager.Instance.PlaySFX(winSound);
 
-        animator.SetTrigger("Win");
+        // Start particles
+        if (winParticles != null)
+        {
+            winParticles.Play();
+        }
+
+
     }
 
     public void NextLevel()
     {
         Time.timeScale = 1f;
 
+        // Stop particles
+        if (winParticles != null)
+        {
+            winParticles.Stop();
+            winParticles.Clear();
+        }
+
+
         panel.SetActive(false);
+
+        GameSettings.freezeScreenActive = false;
 
         SceneManager.LoadScene(nextScene);
         CoinManager.Instance.ResetCoins();
@@ -53,7 +77,17 @@ public class WinScreenUI : MonoBehaviour
     {
         Time.timeScale = 1f;
 
+
+        // Stop particles
+        if (winParticles != null)
+        {
+            winParticles.Stop();
+            winParticles.Clear();
+        }
+
         panel.SetActive(false);
+
+        GameSettings.freezeScreenActive = false;
 
         CoinManager.Instance.ResetCoins();
         SceneManager.LoadScene("mainMenu");

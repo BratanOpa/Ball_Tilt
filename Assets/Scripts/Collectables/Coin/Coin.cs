@@ -11,6 +11,14 @@ public class Coin : MonoBehaviour
     private void Start()
     {
         CoinManager.Instance.totalCoins++;
+
+        Animator animator = GetComponent<Animator>();
+
+        if (animator != null)
+        {
+            animator.Play(0,-1,Random.Range(0f, 1f));
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -31,6 +39,12 @@ public class Coin : MonoBehaviour
                     transform.position,
                     Quaternion.identity
                 );
+                ParticleSystem ps = effect.GetComponent<ParticleSystem>();
+
+                if (ps != null)
+                {
+                    ps.Play();
+                }
 
                 Destroy(effect, 2f);
             }

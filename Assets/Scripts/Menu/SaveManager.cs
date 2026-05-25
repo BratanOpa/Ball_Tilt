@@ -4,6 +4,16 @@ public class SaveManager : MonoBehaviour
 {
     // Antal levels i varje world
     // Index 0 = World 1, Index 1 = World 2 osv.
+
+    public static string[] worldNames =
+    {
+        "Tutorial",
+        "Illusion",
+        "Golf",
+        "DSV",
+        "Kitchen"
+    };
+
     public static int[] worldLevelCounts = {
         7, // Tutorial har 7 levels
         3,  // Illusion har 3 levels
@@ -12,6 +22,24 @@ public class SaveManager : MonoBehaviour
         3 // Kitchen har 3 levels
         
     };
+    //LÄGG IN SÅ MÅNGA MYNT VARJE LEVEL HAR, FÖR ATT VISA I LEVEL SELECT OCH RÄKNA UT TOTAL COINS I VARJE WORLD DÄRIFRÅN
+    public static int[][] worldCoinCounts =
+{
+    // Tutorial world
+    new int[] { 3, 4, 6, 6, 6, 6, 6 },
+
+    // Illusion world
+    new int[] { 0, 0, 0 },
+
+    // Golf world
+    new int[] { 0, 0 },
+
+    // DSV world
+    new int[] { 8, 10, 10 },
+
+    // Kitchen world
+    new int[] { 0, 0, 0 }
+};
 
     // Sparar alla spelarens settings till PlayerPrefs
     // Körs när spelaren ändrar inställningar eller lämnar spelet
@@ -303,20 +331,11 @@ public class SaveManager : MonoBehaviour
     {
         int total = 0;
 
-        int startLevel = 1;
+        int[] levels = worldCoinCounts[worldIndex - 1];
 
-        for (int i = 0; i < worldIndex - 1; i++)
+        for (int i = 0; i < levels.Length; i++)
         {
-            startLevel += worldLevelCounts[i];
-        }
-
-        int totalLevels = worldLevelCounts[worldIndex - 1];
-
-        for (int i = startLevel;
-             i < startLevel + totalLevels;
-             i++)
-        {
-            total += PlayerPrefs.GetInt("levelTotalCoins_" + i,0);
+            total += levels[i];
         }
 
         return total;

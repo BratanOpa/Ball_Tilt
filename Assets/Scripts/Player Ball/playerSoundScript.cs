@@ -29,9 +29,30 @@ public class playerSoundScript : MonoBehaviour
         //enemy får lägre volym
         float volumeMultiplier = isMainPlayer ? 2f : 0.6f;
 
+        
         rollingSource.volume = dynamicVolume * GameSettings.sfxVolume * volumeMultiplier;
-    }
+        
+        // Stoppa rolling completely under win screen
+        if (GameSettings.freezeScreenActive)
+        {
+            rollingSource.volume = 0f;
 
+            if (rollingSource.isPlaying)
+            {
+                rollingSource.Stop();
+            }
+
+            return;
+        }
+        else
+        {
+            if (!rollingSource.isPlaying && !GameSettings.freezeScreenActive)
+            {
+                rollingSource.Play();
+            }
+            return;
+        }
+    }
     private float GetDynamicVolume()
     {
         return dynamicVolume;

@@ -46,5 +46,13 @@ public class endLevelTrigger : MonoBehaviour
     {
         return nextSceneIs;
     }
+    public int GetCurrentLevel()
+    {
+        return currentLevel;
+    }
+    public int GetCurrentWorld()
+        {
+            return currentWorld;
+    }
 
 }

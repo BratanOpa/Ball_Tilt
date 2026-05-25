@@ -28,6 +28,8 @@ public static class GameSettings
 
     public static Vector3 calibrationOffset;
 
+    public static bool freezeScreenActive = false;
+
     public static void ResetToDefaults()
     {
         sensitivity = 2.5f;

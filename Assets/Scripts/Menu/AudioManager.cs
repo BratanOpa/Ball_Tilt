@@ -124,7 +124,11 @@ public class AudioManager : MonoBehaviour
     public void toggleSFX(bool muted)
     {
         sfxSource.mute = muted;
-        
+        Debug.Log("sfx is muted: " + muted);
+    }
+    public bool getSFXMuted()
+    {
+       return sfxSource.mute;
     }
 
     public void ToggleMusic(bool muted)
