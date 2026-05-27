@@ -5829,7 +5829,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 47.459362, y: 0, z: 1.7993774, w: 0}
+  m_margin: {x: 44.197098, y: 0, z: -11.190094, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -5953,7 +5953,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6859ee19f8006bd219b009246a4a668f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b7b3143a67ab942fae6d0df1133dfb9, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
