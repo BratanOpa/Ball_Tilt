@@ -8,6 +8,7 @@ public class Joystick : MonoBehaviour, JoystickInterface, IDragHandler, IPointer
     public RectTransform handle;
 
     private Vector2 inputVector;
+    private float limitHandle = 1.5f;  //Limits ho far from background handle can move
 
 
     public void OnEnable()
@@ -36,12 +37,12 @@ public class Joystick : MonoBehaviour, JoystickInterface, IDragHandler, IPointer
         pos.x = pos.x / background.sizeDelta.x;
         pos.y = pos.y / background.sizeDelta.y;
 
-        inputVector = new Vector2(pos.x * 2, pos.y * 2);
+        inputVector = new Vector2(pos.x * limitHandle, pos.y * limitHandle);
         inputVector = (inputVector.magnitude > 1) ? inputVector.normalized : inputVector;
 
         handle.anchoredPosition = new Vector2(
-            inputVector.x * (background.sizeDelta.x / 2),
-            inputVector.y * (background.sizeDelta.y / 2));
+            inputVector.x * (background.sizeDelta.x / limitHandle),
+            inputVector.y * (background.sizeDelta.y / limitHandle));
     }
 
     public void OnPointerUp(PointerEventData eventData)
