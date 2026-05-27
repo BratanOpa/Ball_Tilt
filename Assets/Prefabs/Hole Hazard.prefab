@@ -158,7 +158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a4e7368c35392a7d93fa8669b111714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PullDown
-  force: 20
+  force: 40
 --- !u!136 &2672136654296260646
 CapsuleCollider:
   m_ObjectHideFlags: 0
