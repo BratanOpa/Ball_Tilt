@@ -3537,7 +3537,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fda47d7d56f5f54bb6805460f58e1bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LoadSceneButton
-  sceneName: tutorialLevel1
+  sceneName: tutorial1
   clickSound: {fileID: 8300000, guid: 4a6049782cff9be4888dba1a1ad3f755, type: 3}
 --- !u!1 &1300593389
 GameObject:
