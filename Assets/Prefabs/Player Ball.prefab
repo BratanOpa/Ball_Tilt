@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d034012cb037b27b2a1601308cca1b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::gravityControl
-  forceLimit: 10
+  forceLimit: 12
   offset: {x: 0, y: 0, z: 0}
   enableVibration: 1
 --- !u!114 &6044394536692062664

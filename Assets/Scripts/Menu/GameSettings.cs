@@ -17,7 +17,7 @@ public enum JoystickMode
 
 public static class GameSettings
 {
-    public static float sensitivity = 2.5f;
+    public static float sensitivity = 0f;
     public static float deadZone = 0.05f;
     public static float musicVolume = 0.5f;
     public static float sfxVolume = 3f;
@@ -32,7 +32,7 @@ public static class GameSettings
 
     public static void ResetToDefaults()
     {
-        sensitivity = 2.5f;
+        sensitivity = 1.3f;
         deadZone = 0.05f;
         musicVolume = 0.5f;
         sfxVolume = 3f;

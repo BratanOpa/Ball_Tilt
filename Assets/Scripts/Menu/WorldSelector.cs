@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Collections;
 using static System.TimeZoneInfo;
-using UnityEditor.Rendering.LookDev;
+//using UnityEditor.Rendering.LookDev;  //This line crash my pc
 
 // Hanterar world selection-menyn
 public class WorldSelector : MonoBehaviour
