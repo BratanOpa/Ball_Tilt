@@ -32,13 +32,13 @@ public class SaveManager : MonoBehaviour
     new int[] { 0, 0, 0 },
 
     // Golf world
-    new int[] { 0, 0 },
+    new int[] { 6, 6 },
 
     // DSV world
     new int[] { 8, 10, 10 },
 
     // Kitchen world
-    new int[] { 0, 0, 0 }
+    new int[] { 6, 6, 6 }
 };
 
     // Sparar alla spelarens settings till PlayerPrefs
