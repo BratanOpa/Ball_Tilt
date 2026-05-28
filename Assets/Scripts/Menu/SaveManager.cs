@@ -29,7 +29,7 @@ public class SaveManager : MonoBehaviour
     new int[] { 3, 4, 6, 6, 6, 6, 6 },
 
     // Illusion world
-    new int[] { 0, 0, 0 },
+    new int[] { 2, 3, 3 },
 
     // Golf world
     new int[] { 6, 6 },
