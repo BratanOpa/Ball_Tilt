@@ -34,7 +34,7 @@ public static class GameSettings
     {
         sensitivity = 1.3f;
         deadZone = 0.05f;
-        musicVolume = 0.5f;
+        musicVolume = 0.3f;
         sfxVolume = 3f;
         musicMuted = false;
 

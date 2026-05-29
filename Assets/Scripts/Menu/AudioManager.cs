@@ -22,9 +22,9 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // överlever scenbyten
+        DontDestroyOnLoad(gameObject); // ï¿½verlever scenbyten
 
-        SceneManager.sceneLoaded += OnSceneLoaded; // förbereder att köra onSceneLoaded varje gång en scen laddas. Unity kör OnSceneLoaded(scene, mode);
+        SceneManager.sceneLoaded += OnSceneLoaded; // fï¿½rbereder att kï¿½ra onSceneLoaded varje gï¿½ng en scen laddas. Unity kï¿½r OnSceneLoaded(scene, mode);
 
         // Skapa AudioSources om de inte finns
         if (musicSource == null)
@@ -38,7 +38,7 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    //kör innan någon scen laddas, så att ljudet är redo direkt
+    //kï¿½r innan nï¿½gon scen laddas, sï¿½ att ljudet ï¿½r redo direkt
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     static void Init()
     {
@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
     {
         Debug.Log("New scene loaded: " + scene.name);
 
-        // Musiken måste lika i resources/Audio och ha samma namn som scenen nedan för att spelas automatiskt, annars spelas defaultmusiken
+        // Musiken mï¿½ste lika i resources/Audio och ha samma namn som scenen nedan fï¿½r att spelas automatiskt, annars spelas defaultmusiken
 
         switch (scene.name)
         {
@@ -89,10 +89,10 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    //för att spela ny låt vid ny värld exempelvis
+    //fï¿½r att spela ny lï¿½t vid ny vï¿½rld exempelvis
     public void PlayMusic(AudioClip newClip)
     {
-        // Om samma låt redan spelas -> gör inget
+        // Om samma lï¿½t redan spelas -> gï¿½r inget
         if (currentTrack == newClip)
             return;
 
@@ -103,10 +103,10 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    //kalla på denna i andra skript för att spela ljudeffekter. AudioManager.Instance.PlaySFX(soundeffectName, 0.4f);
-    public void PlaySFX(AudioClip clip, float volume = 1f) //volymen kan justeras per ljud, t.ex. för att göra vissa ljudeffekter mer diskreta. generellt används fortfarande sliderns volym
+    //kalla pï¿½ denna i andra skript fï¿½r att spela ljudeffekter. AudioManager.Instance.PlaySFX(soundeffectName, 0.4f);
+    public void PlaySFX(AudioClip clip, float volume = 1f) //volymen kan justeras per ljud, t.ex. fï¿½r att gï¿½ra vissa ljudeffekter mer diskreta. generellt anvï¿½nds fortfarande sliderns volym
     {
-        sfxSource.PlayOneShot(clip);
+        sfxSource.PlayOneShot(clip, volume);
     }
 
 

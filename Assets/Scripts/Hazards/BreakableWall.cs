@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class BreakableWall : MonoBehaviour
@@ -12,7 +13,7 @@ public class BreakableWall : MonoBehaviour
         if (HasEnoughVelocity(colliderObject))
         {
             //TODO: effekt för att vägen går sönder
-            AudioManager.Instance.PlaySFX(breakSound, 0.4f); //Spela upp ljudet när väggen går sönder
+            AudioManager.Instance.PlaySFX(breakSound, 0.5f); //Spela upp ljudet när väggen går sönder
             Destroy(gameObject);
         }
     }

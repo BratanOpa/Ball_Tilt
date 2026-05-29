@@ -12,7 +12,7 @@ public class playerSoundScript : MonoBehaviour
 
     private bool isRespawning = false;
 
-    //avgör om detta är huvudspelaren (fullt ljud + death-ljud)
+    //avgï¿½r om detta ï¿½r huvudspelaren (fullt ljud + death-ljud)
     public bool isMainPlayer = true;
 
     void Start()
@@ -26,8 +26,8 @@ public class playerSoundScript : MonoBehaviour
         playerVelocity = rb.angularVelocity.magnitude;
         dynamicVolume = Mathf.Clamp01(playerVelocity / 12f);
 
-        //enemy får lägre volym
-        float volumeMultiplier = isMainPlayer ? 2f : 0.6f;
+        //enemy fï¿½r lï¿½gre volym
+        float volumeMultiplier = isMainPlayer ? 4f : 1.5f;     //2f : 0.6f
 
         
         rollingSource.volume = dynamicVolume * GameSettings.sfxVolume * volumeMultiplier;
@@ -64,11 +64,9 @@ public class playerSoundScript : MonoBehaviour
         {
             if (collision.gameObject.CompareTag("Wall"))
             {
-                // enemy får lägre volym
-                float volumeMultiplier = isMainPlayer ? 1f : 0.6f;
-
-                audioSource.volume = GetDynamicVolume() * GameSettings.sfxVolume * volumeMultiplier;
-                audioSource.PlayOneShot(ballCollisionSFX);
+                // enemy fï¿½r lï¿½gre volym
+                float volumeMultiplier = isMainPlayer ? 0.6f : 0.4f;
+                audioSource.PlayOneShot(ballCollisionSFX, Mathf.Clamp01(playerVelocity / 30f) * GameSettings.sfxVolume * volumeMultiplier);
             }
 
             //bollkollision = deathljud
@@ -77,8 +75,7 @@ public class playerSoundScript : MonoBehaviour
                 // endast huvudspelaren spelar death-ljud
                 if (isMainPlayer)
                 {
-                    audioSource.volume = 0.6f * GameSettings.sfxVolume;
-                    audioSource.PlayOneShot(playerDeathSFX);
+                    audioSource.PlayOneShot(playerDeathSFX, 0.6f * GameSettings.sfxVolume);
                 }
 
                 isRespawning = true;
@@ -97,8 +94,7 @@ public class playerSoundScript : MonoBehaviour
             {
 
 
-                audioSource.volume = 0.6f * GameSettings.sfxVolume;
-                audioSource.PlayOneShot(playerDeathSFX);
+                audioSource.PlayOneShot(playerDeathSFX, 0.6f * GameSettings.sfxVolume);
 
                 isRespawning = true;
                 StartCoroutine(RespawnCooldown());
