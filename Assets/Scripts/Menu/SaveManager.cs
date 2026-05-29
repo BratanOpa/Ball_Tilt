@@ -8,18 +8,18 @@ public class SaveManager : MonoBehaviour
     public static string[] worldNames =
     {
         "Tutorial",
-        "Illusion",
         "Golf",
-        "DSV",
-        "Kitchen"
+        "Kitchen",
+        "Illusion",
+        "DSV"
     };
 
     public static int[] worldLevelCounts = {
         7, // Tutorial har 7 levels
-        3,  // Illusion har 3 levels
-        2, // Golf har 2 levels
-        3, // DSV har 3 levels
-        3 // Kitchen har 3 levels
+        2,  // Golf har 2 levels
+        3, // Kitchen har 3 levels
+        3, // Illusion har 3 levels
+        3 // DSV har 3 levels
         
     };
     //LÄGG IN SÅ MÅNGA MYNT VARJE LEVEL HAR, FÖR ATT VISA I LEVEL SELECT OCH RÄKNA UT TOTAL COINS I VARJE WORLD DÄRIFRÅN
@@ -28,17 +28,19 @@ public class SaveManager : MonoBehaviour
     // Tutorial world
     new int[] { 3, 4, 6, 6, 6, 6, 6 },
 
-    // Illusion world
-    new int[] { 2, 3, 3 },
-
     // Golf world
     new int[] { 6, 6 },
+
+    // Kitchen world
+    new int[] { 6, 6, 6 },
+
+    // Illusion world
+    new int[] { 2, 3, 3 },
 
     // DSV world
     new int[] { 8, 10, 10 },
 
-    // Kitchen world
-    new int[] { 6, 6, 6 }
+    
 };
 
     // Sparar alla spelarens settings till PlayerPrefs
@@ -103,19 +105,6 @@ public class SaveManager : MonoBehaviour
                 (int)JoystickMode.Left
             );
 
-        /*// Hämtar sparad calibration offset
-        float offsetX =
-            PlayerPrefs.GetFloat("CalibrationOffsetX", 0f);
-
-        float offsetY =
-            PlayerPrefs.GetFloat("CalibrationOffsetY", 0f);
-
-        float offsetZ =
-            PlayerPrefs.GetFloat("CalibrationOffsetZ", 0f);
-
-        GameSettings.calibrationOffset =
-            new Vector3(offsetX, offsetY, offsetZ);
-        */
         Debug.Log("Settings loadade!");
     }
 
