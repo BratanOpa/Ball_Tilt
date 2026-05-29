@@ -50720,8 +50720,8 @@ Transform:
   m_GameObject: {fileID: 686077021}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.2675, y: 0.5, z: 10.2}
-  m_LocalScale: {x: 1, y: 10, z: 10.465}
+  m_LocalPosition: {x: -0.2675, y: 0.5614, z: 10.6707}
+  m_LocalScale: {x: 1.9415, y: 10.123, z: 10.465}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -50934,8 +50934,8 @@ Transform:
   m_GameObject: {fileID: 780720528}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.3, y: 0.85, z: -0.3415}
-  m_LocalScale: {x: 1, y: 9.508558, z: 23.040813}
+  m_LocalPosition: {x: -5.8669, y: 0.85, z: -0.1106}
+  m_LocalScale: {x: 2.1338, y: 9.508558, z: 23.501629}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -51599,8 +51599,8 @@ Transform:
   m_GameObject: {fileID: 1057887206}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.2673, y: 0.5, z: -10.2}
-  m_LocalScale: {x: 1, y: 10, z: 10.785}
+  m_LocalPosition: {x: -0.2673, y: 0.557, z: -10.7542}
+  m_LocalScale: {x: 2.1083, y: 10.114, z: 10.785}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -51711,8 +51711,8 @@ Transform:
   m_GameObject: {fileID: 1067527761}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.3, y: 0.85, z: -0.1382}
-  m_LocalScale: {x: 1, y: 9.508558, z: 22.180672}
+  m_LocalPosition: {x: 5.887, y: 0.85, z: -0.0443}
+  m_LocalScale: {x: 2.174, y: 9.508558, z: 23.455664}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -54994,7 +54994,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1792764028008260787, guid: 1e0c1114609c9004198ff87e6043fd86, type: 3}
       propertyPath: orthographic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1792764028008260787, guid: 1e0c1114609c9004198ff87e6043fd86, type: 3}
       propertyPath: orthographic size
