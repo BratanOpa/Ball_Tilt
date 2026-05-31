@@ -2891,7 +2891,7 @@ MonoBehaviour:
   - {fileID: 222622065}
   - {fileID: 556152840}
   - {fileID: 158462027}
-  clickSound: {fileID: 8300000, guid: 4a6049782cff9be4888dba1a1ad3f755, type: 3}
+  clickSound: {fileID: 8300000, guid: 9a8780d5f70fcd34db2f679524543095, type: 3}
   worldButtons:
   - {fileID: 1268297203}
   - {fileID: 1901499181}
@@ -4242,7 +4242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MainMenuController
   mainMenu: {fileID: 1581850810}
   levelMenu: {fileID: 970772598}
-  clickSound: {fileID: 8300000, guid: 4a6049782cff9be4888dba1a1ad3f755, type: 3}
+  clickSound: {fileID: 8300000, guid: 9a8780d5f70fcd34db2f679524543095, type: 3}
   animator: {fileID: 1614587942}
 --- !u!61 &1614587941
 BoxCollider2D:

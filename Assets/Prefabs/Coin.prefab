@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Coin
   pickupEffect: {fileID: 1449581378668185526, guid: fd16c9cb62e6fd1409454ae0012ad212, type: 3}
-  pickupSound: {fileID: 8300000, guid: 1c9d1b9b03621bb4c89b9a9864d3bc63, type: 3}
+  pickupSound: {fileID: 8300000, guid: f4b3544da6fa08549acab168aa2369b3, type: 3}
 --- !u!65 &5878133105423494786
 BoxCollider:
   m_ObjectHideFlags: 0
