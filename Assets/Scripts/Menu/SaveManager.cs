@@ -93,17 +93,9 @@ public class SaveManager : MonoBehaviour
         GameSettings.musicMuted =
             PlayerPrefs.GetInt("MusicMuted", 0) == 1;
 
-        GameSettings.controlMode =
-            (ControlMode)PlayerPrefs.GetInt(
-                "ControlMode",
-                (int)ControlMode.Tilt
-            );
+        GameSettings.controlMode =(ControlMode)PlayerPrefs.GetInt("ControlMode", (int)ControlMode.Tilt);
 
-        GameSettings.joystickMode =
-            (JoystickMode)PlayerPrefs.GetInt(
-                "JoystickMode",
-                (int)JoystickMode.Left
-            );
+        GameSettings.joystickMode = (JoystickMode)PlayerPrefs.GetInt("JoystickMode",(int)JoystickMode.Left);
 
         Debug.Log("Settings loadade!");
     }

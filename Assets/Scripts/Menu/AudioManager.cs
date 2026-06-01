@@ -12,9 +12,18 @@ public class AudioManager : MonoBehaviour
     public AudioClip currentTrack;
 
 
+
+    //kör innan någon scen laddas, så att ljudet är redo direkt
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+    static void Init()
+    {
+        GameObject obj = new GameObject("AudioManager");
+        obj.AddComponent<AudioManager>();
+
+    }
     private void Awake()
     {
-        // --- NY KOD ---
+        
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject); // undvik duplicates
@@ -22,9 +31,9 @@ public class AudioManager : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject); // �verlever scenbyten
+        DontDestroyOnLoad(gameObject); // överlever scenbyten
 
-        SceneManager.sceneLoaded += OnSceneLoaded; // f�rbereder att k�ra onSceneLoaded varje g�ng en scen laddas. Unity k�r OnSceneLoaded(scene, mode);
+        SceneManager.sceneLoaded += OnSceneLoaded; // förbereder att köra onSceneLoaded varje gång en scen laddas. Unity kör OnSceneLoaded(scene, mode);
 
         // Skapa AudioSources om de inte finns
         if (musicSource == null)
@@ -37,15 +46,6 @@ public class AudioManager : MonoBehaviour
 
     }
 
-
-    //k�r innan n�gon scen laddas, s� att ljudet �r redo direkt
-    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
-    static void Init()
-    {
-        GameObject obj = new GameObject("AudioManager");
-        obj.AddComponent<AudioManager>();
-        
-    }
 
 
     private void Start()
@@ -63,7 +63,7 @@ public class AudioManager : MonoBehaviour
     {
         Debug.Log("New scene loaded: " + scene.name);
 
-        // Musiken m�ste lika i resources/Audio och ha samma namn som scenen nedan f�r att spelas automatiskt, annars spelas defaultmusiken
+        // Musiken måste lika i resources/Audio och ha samma namn som scenen nedan för att spelas automatiskt, annars spelas defaultmusiken
 
         switch (scene.name)
         {
@@ -89,10 +89,10 @@ public class AudioManager : MonoBehaviour
     }
 
 
-    //f�r att spela ny l�t vid ny v�rld exempelvis
+    //för att spela ny låt vid ny värld exempelvis
     public void PlayMusic(AudioClip newClip)
     {
-        // Om samma l�t redan spelas -> g�r inget
+        // Om samma låt redan spelas -> gör inget
         if (currentTrack == newClip)
             return;
 
@@ -103,8 +103,8 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
-    //kalla p� denna i andra skript f�r att spela ljudeffekter. AudioManager.Instance.PlaySFX(soundeffectName, 0.4f);
-    public void PlaySFX(AudioClip clip, float volume = 1f) //volymen kan justeras per ljud, t.ex. f�r att g�ra vissa ljudeffekter mer diskreta. generellt anv�nds fortfarande sliderns volym
+    //kalla på denna i andra skript för att spela ljudeffekter. AudioManager.Instance.PlaySFX(soundeffectName, 0.4f);
+    public void PlaySFX(AudioClip clip, float volume = 1f) //volymen kan justeras per ljud, t.ex. för att göra vissa ljudeffekter mer diskreta. generellt används fortfarande sliderns volym
     {
         sfxSource.PlayOneShot(clip, volume);
     }
