@@ -6,14 +6,14 @@ public class WinScreenUI : MonoBehaviour
 {
     public static WinScreenUI Instance;
 
-    [Header("UI")]
+    
     [SerializeField] private GameObject panel;
     [SerializeField] private TextMeshProUGUI coinsText;
 
-    [Header("Particles")]
+    
     [SerializeField] private ParticleSystem winParticles;
 
-    [Header("Audio")]
+    
     [SerializeField] private AudioClip winSound;
     private AudioSource[] playerAudioSources;
 

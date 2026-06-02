@@ -62,43 +62,53 @@ public class SaveManager : MonoBehaviour
         // Joystick mode (Left / Right / Touch)
         PlayerPrefs.SetInt("JoystickMode", (int)GameSettings.joystickMode);
 
-        /*// Sparar calibration offset för tilt controls
-        PlayerPrefs.SetFloat("CalibrationOffsetX", GameSettings.calibrationOffset.x);
-        PlayerPrefs.SetFloat("CalibrationOffsetY", GameSettings.calibrationOffset.y);
-        PlayerPrefs.SetFloat("CalibrationOffsetZ", GameSettings.calibrationOffset.z);
-        */
         // Viktigt: faktiskt skriva till disk
         PlayerPrefs.Save();
-        Debug.Log("Settings sparade!");
+        Debug.Log("Settings sparade");
     }
 
     // Laddar alla sparade settings från PlayerPrefs
     // Körs när spelet startar
     public static void loadSettings()
     {
-        // Om inget sparat finns används defaultvärden
+        // Om inget sparat finns för nyckelordet används defaultvärdena 
 
-        GameSettings.sensitivity =
-            PlayerPrefs.GetFloat("Sensitivity", 2.5f);
+        // Sensitivity / Deadzone
+        GameSettings.sensitivity = PlayerPrefs.GetFloat("Sensitivity", 2.5f);
+        GameSettings.deadZone = PlayerPrefs.GetFloat("DeadZone", 0.05f);
 
-        GameSettings.deadZone =
-            PlayerPrefs.GetFloat("DeadZone", 0.05f);
+        // Ljudinställningar
+        GameSettings.musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        GameSettings.sfxVolume = PlayerPrefs.GetFloat("SFXVolume", 3f);
+        GameSettings.musicMuted = PlayerPrefs.GetInt("MusicMuted", 0) == 1;
 
-        GameSettings.musicVolume =
-            PlayerPrefs.GetFloat("MusicVolume", 0.5f);
-
-        GameSettings.sfxVolume =
-            PlayerPrefs.GetFloat("SFXVolume", 3f);
-
-        GameSettings.musicMuted =
-            PlayerPrefs.GetInt("MusicMuted", 0) == 1;
-
+        // Controlls
         GameSettings.controlMode =(ControlMode)PlayerPrefs.GetInt("ControlMode", (int)ControlMode.Tilt);
-
         GameSettings.joystickMode = (JoystickMode)PlayerPrefs.GetInt("JoystickMode",(int)JoystickMode.Left);
 
-        Debug.Log("Settings loadade!");
+        Debug.Log("Settings loadade");
     }
+
+
+    // Konverterar local level index till globalt level index
+    //
+    // Exempel:
+    // World 2, Level 1
+    // blir levelCompleted_8
+    public static int GetGlobalLevelIndex(int worldIndex, int localLevelIndex)
+    {
+        int globalIndex = localLevelIndex;
+
+        // Lägg till alla levels från tidigare worlds
+        for (int i = 0; i < worldIndex - 1; i++)
+        {
+            globalIndex += worldLevelCounts[i];
+        }
+
+        return globalIndex;
+    }
+
+
 
     // Markerar en level som klarad
     // Exempel: levelCompleted_8 = 1
@@ -142,24 +152,7 @@ public class SaveManager : MonoBehaviour
     }
 
 
-    // Konverterar local level index till globalt level index
-    //
-    // Exempel:
-    // World 2, Level 1
-    // blir levelCompleted_8
-    public static int GetGlobalLevelIndex(int worldIndex, int localLevelIndex
-)
-    {
-        int globalIndex = localLevelIndex;
-
-        // Lägg till alla levels från tidigare worlds
-        for (int i = 0; i < worldIndex - 1; i++)
-        {
-            globalIndex += worldLevelCounts[i];
-        }
-
-        return globalIndex;
-    }
+    
 
     // Räknar ut hur många procent av en world
     // som spelaren har klarat
@@ -185,10 +178,7 @@ public class SaveManager : MonoBehaviour
              i++)
         {
             // Om level är klarad
-            if (PlayerPrefs.GetInt(
-                "levelCompleted_" + i,
-                0
-            ) == 1)
+            if (PlayerPrefs.GetInt("levelCompleted_" + i,0) == 1)
             {
                 completedLevels++;
             }
@@ -293,6 +283,7 @@ public class SaveManager : MonoBehaviour
 
         int startLevel = 1;
 
+        //så att den börjar kolla rätt globallevelindex.
         for (int i = 0; i < worldIndex - 1; i++)
         {
             startLevel += worldLevelCounts[i];

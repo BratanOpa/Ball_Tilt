@@ -16,7 +16,7 @@ public class Coin : MonoBehaviour
 
         if (animator != null)
         {
-            animator.Play(0,-1,Random.Range(0f, 1f));
+            animator.Play(0,-1,Random.Range(0f, 1f)); // Starta animationen på random frame så dem inte är synkade
         }
 
     }
@@ -34,11 +34,7 @@ public class Coin : MonoBehaviour
             // Spawn particles
             if (pickupEffect != null)
             {
-                GameObject effect = Instantiate(
-                    pickupEffect,
-                    transform.position,
-                    Quaternion.identity
-                );
+                GameObject effect = Instantiate(pickupEffect, transform.position, Quaternion.identity);
                 ParticleSystem ps = effect.GetComponent<ParticleSystem>();
 
                 if (ps != null)

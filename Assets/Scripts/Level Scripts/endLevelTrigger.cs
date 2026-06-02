@@ -35,7 +35,7 @@ public class endLevelTrigger : MonoBehaviour
 
         SaveManager.SaveLevelCoins(globalLevel, CoinManager.Instance.collectedCoins);
 
-        SaveManager.SaveLevelTotalCoins(globalLevel, CoinManager.Instance.totalCoins);
+        SaveManager.SaveLevelTotalCoins(globalLevel, CoinManager.Instance.totalCoins); // Redundant då vi numera bara behöver komma ihåg den levelns total coins i winscreenen där den redan ser den.
 
         SaveManager.checkWorldUnlock(currentWorld); // Kolla om nästa värld ska låsas upp
 
